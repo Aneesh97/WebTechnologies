@@ -10,7 +10,7 @@ banUpperCase("./public/", "");
 // Define the sequence of functions to be called for each request.  Make URLs
 // lower case, ban upper case filenames, require authorisation for admin.html,
 // and deliver static files from ./public.
-app.use(lower);
+app.use(handle);
 app.use(ban)
 app.use("/admin.html", auth);
 var options = { setHeaders: deliverXHTML };
@@ -18,11 +18,49 @@ app.use(express.static("public", options));
 app.listen(8080, "localhost");
 console.log("Visit http://localhost:8080/");
 
-// Make the URL lower case.
-function lower(req, res, next) {
-    req.url = req.url.toLowerCase();
-    //console.log("url=", req.url);
-    next();
+//Handle url requests
+function handle (req, res, next) {
+  // Make the URL lower case.
+  req.url = req.url.toLowerCase();
+  console.log("url=", req.url);
+  if (url.startsWith("/content.html")) get_content(url, res);
+  else if (url == "/data") get_list(res);
+  else getFile(url, res);
+  next();
+}
+
+//Get a list of data from a client AJAX request
+function get_list(res) {
+  var ps = db.prepare(...);
+  ps.all(ready);
+  function ready(err, list) {
+    deliver_list(list, res);
+  }
+}
+function deliver_list(list, res) {
+  var text = JSON.stringify(list);
+  deliver(res, "text/plain", null, text);
+}
+
+//Get piece of content from database from server URL request
+function get_content(url, res) {
+  fs.readFile("./content.html", ready);
+  function ready(err, content) {
+    get_data(content, url, res);
+  }
+}
+function get_data(text, url, res) {
+  var parts = url.split("=");
+  var id = parts[1];
+  var ps = db.prepare("select * from pets where id=?");
+  ps.get(id, ready);
+  function ready(err, obj) { prepare(text, obj, res); }
+}
+//Send filled in document to be rendered
+function prepare(text, data, res) {
+  var parts = text.split("$");
+  var page = parts[0] + data.name + parts[1] + data.image + parts[2];
+  deliver(res, htmltype, null, page);
 }
 
 // Forbid access to the URLs in the banned list.
