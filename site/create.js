@@ -5,7 +5,7 @@ create();
 
 async function create() {
     try {
-        db = await sqlite.open("./db.sqlite");
+        db = await sqlite.open("./data.db");
         await db.run("pragma foreign_keys = on");
         await db.run("create table users (id primary key, username, email, Oscore, Cscore, Escore, Ascore, Nscore, Wellbeing)");
         await db.run("insert into users values (42,'aa16169', 'aa16169@bristol.ac.uk', 42, 34, 56, 66, 11, 12 )");
