@@ -8,17 +8,18 @@ function start() {
 }
 
 function fetch_data() {
+  console.log("fetching data");
   var q = new XMLHttpRequest();
   q.onreadystatechange = receive;
   q.open("GET", "/data", true);
-  q.send;
+  q.send();
 }
 
 function receive() {
   if (this.readyState != XMLHttpRequest.DONE) return;
   var list = JSON.parse(this.responseText);
-  var html = "<li>" + ...;
-  var ul = document.querySelector("#contentList");
+  var html = "<li>" + list[i];
+  var ul = document.querySelector("#userList");
   ul.innerHMTL = html;
 
 }

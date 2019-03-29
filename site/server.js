@@ -4,6 +4,8 @@
 var express = require("express");
 var app = express();
 var fs = require("fs");
+var sql = require("sqlite3");
+var db = new sql.Database("data.db");
 var banned = [];
 banUpperCase("./public/", "");
 
@@ -21,18 +23,20 @@ console.log("Visit http://localhost:8080/");
 //Handle url requests
 function handle (req, res, next) {
   // Make the URL lower case.
-  req.url = req.url.toLowerCase();
+  var url = req.url.toLowerCase();
   console.log("url=", req.url);
   if (url.startsWith("/content.html")) get_content(url, res);
   else if (url == "/data") get_list(res);
-  else getFile(url, res);
+  //else getFile(url, res);
   next();
 }
 
 //Get a list of data from a client AJAX request
 function get_list(res) {
-  var ps = db.prepare(...);
+  var ps = db.prepare("SELECT * from users");
   ps.all(ready);
+  console.log("users list")
+  console.log(ps);
   function ready(err, list) {
     deliver_list(list, res);
   }
