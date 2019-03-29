@@ -26,11 +26,13 @@ function handle (req, res, next) {
   var url = req.url.toLowerCase();
   console.log("url=", req.url);
   if (url.startsWith("/content.html")) get_content(url, res);
+  //Request from client side AJAX
   else if (url == "/data") get_list(res);
   //else getFile(url, res);
   next();
 }
 
+//CLIENT BASED
 //Get a list of data from a client AJAX request
 function get_list(res) {
   var ps = db.prepare("SELECT * from users");
@@ -46,6 +48,7 @@ function deliver_list(list, res) {
   deliver(res, "text/plain", null, text);
 }
 
+//SERVER BASED
 //Get piece of content from database from server URL request
 function get_content(url, res) {
   fs.readFile("./content.html", ready);
