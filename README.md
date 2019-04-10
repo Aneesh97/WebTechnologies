@@ -2,10 +2,18 @@
 Roman Bromidge: rb16730
 Aneesh Anand: aa16169
 
-#TODO
-- make some initial pages
-- get express server working
-- make a plan
+TODO Front End
+Roman:
+- index (landing page)
+- pers_test
+- review
+- content
+Aneesh:
+- journal
+- account
+- register
+- about
+- results
 
 #MARKS
 - HTML: XHTML delivery, or a validator, to make sure your pages are correct, investigated a variety of different issues and gained a general high level of confidence with the structure of HTML pages (or with generating HTML via a framework)

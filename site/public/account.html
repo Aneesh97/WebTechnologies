@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115079640-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115079640-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Merudite</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/styles/overrideIndex.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img src="/assets/MeruditeLogo3-01.svg" width="50" height="50" alt="">
+      </a>
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link digest" href="/"><i class="fas fa-pen-nib"></i> Your Journey</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link journal" href="/journal"><i class="fas fa-book"></i> Journal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link results" href="/results"><i class="fas fa-chart-pie"></i> My Results</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link account dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-cog"></i> Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/account">Edit Details</a>
+                <a class="dropdown-item logOut" href="/">Log Out</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- User Information -->
+    <div class="container" style="margin-top: 2em;">
+      <div class="alert alert-success emailSuccessful" role="alert" style="display: none;">
+        <strong>Email changed successfully!</strong> Please use the link in the email we've sent to verify your new email address!<br>Can't find it?
+        <button type="button" class="btn btn-sm btn-link sendAnotherVerifyEmail">Send Another</button>
+      </div>
+      <div class="alert alert-danger emailUnsuccessful" role="alert" style="display: none;">
+        Email change unsuccessful! Please try again.
+      </div>
+      <div class="alert alert-success passSuccessful" role="alert" style="display: none;">
+        Password changed successfully!
+      </div>
+      <div class="alert alert-danger passUnsuccessful" role="alert" style="display: none;">
+        Password change unsuccessful! Please try again.
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="changeEmail">Change your email</label>
+          <input type="email" class="form-control" id="changeEmail" aria-describedby="emailHelp" placeholder="New email">
+        </div>
+        <div class="form-group">
+          <label for="changePassword">Change your password</label>
+          <input type="password" class="form-control" id="changePassword" placeholder="New password">
+          <small class="form-text text-muted 8long" style="display: none;">At least 8 characters long</small>
+          <small class="form-text text-muted 1Lower" style="display: none;">At least one lowercase letter</small>
+          <small class="form-text text-muted 1Upper" style="display: none;">At least one uppercase letter</small>
+          <small class="form-text text-muted 1Number" style="display: none;">At least one number</small>
+        </div>
+        <div class="form-group">
+          <label for="oldPassword">Please confirm your current password</label>
+          <input required type="password" class="form-control" id="oldPassword" placeholder="Old password">
+        </div>
+        <button type="button" class="btn btn-lg btn-warning submitAccountChanges">Submit</button>
+      </form>
+      <hr>
+      <button type="button" class="btn btn-sm btn-link deleteAccountInit">Delete Account</button>
+      <div class="jumbotron deleteAccountJumbo" style="display: none;">
+        <h1 class="display-6">Are you sure?</h1>
+        <p class="lead">If you delete your account, you'll lose access to our curated selection of useful content, and all your journal entries will be removed too!</p>
+        <hr class="my-4">
+        <p>We'll be sad to see you go, but if you really want to, please enter your password and click the button below to delete your account.</p>
+        <div class="form-group">
+          <input required type="password" class="form-control" id="deletePassword" placeholder="Password">
+        </div>
+        <button type="button" class="btn btn-danger btn-lg deleteAccountConfirm">Delete My Account</button>
+      </div>
+
+
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAVZ1f-Rd3Wv8f6lsses339gA6Rl0HOtGU",
+        authDomain: "merudite-13f42.firebaseapp.com",
+        databaseURL: "https://merudite-13f42.firebaseio.com",
+        projectId: "merudite-13f42",
+        storageBucket: "merudite-13f42.appspot.com",
+        messagingSenderId: "257736913099"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!-- Embedly -->
+    <script>
+      (function(w, d){
+       var id='embedly-platform', n = 'script';
+       if (!d.getElementById(id)){
+         w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
+         var e = d.createElement(n); e.id = id; e.async=1;
+         e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+         var s = d.getElementsByTagName(n)[0];
+         s.parentNode.insertBefore(e, s);
+       }
+      })(window, document);
+    </script>
+
+    <!-- JQuery and Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/checking.js"></script>
+    <script src="scripts/account.js"></script>
+  </body>
+</html>
