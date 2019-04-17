@@ -1,146 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115079640-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-115079640-1');
-    </script>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <title>Merudite</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/styles/overrideIndex.css">
-
-    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-  </head>
-  <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-inverse bg-inverse">
-      <a class="navbar-brand" href="/">
-        <img src="assets/MeruditeLogo3-01.svg" width="50" height="50" class="d-inline-block align-top" alt="">
-      </a>
-    </nav>
-
-    <!-- Register Form -->
-    <div class="container regContainer">
-      <div class="row">
-        <div class="card aboutCard col-md-12" style="background-color: #ffffff;">
-          <div class="card-body formCard">
-            <h4 class="card-title"><strong>Start becoming more self-aware</strong></h4>
-            <form class="regForm">
-              <div class="form-group">
-                <input required type="email" class="form-control lineOnly" id="registerEmail" aria-describedby="emailHelp" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <input required type="password" class="form-control lineOnly" id="registerPassword" aria-describedby="passHelp" placeholder="Password">
-                <small class="form-text text-muted 8long" style="display: none;">At least 8 characters long</small>
-                <small class="form-text text-muted 1Lower" style="display: none;">At least one lowercase letter</small>
-                <small class="form-text text-muted 1Upper" style="display: none;">At least one uppercase letter</small>
-                <small class="form-text text-muted 1Number" style="display: none;">At least one number</small>
-              </div>
-
-              <div class="form-group">
-                <input required type="password" class="form-control lineOnly" id="repeatPassword" placeholder="Confirm Password">
-              </div>
-              <!-- Alert if passwords aren't the same -->
-              <div style="display: none;" class="passWarn alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Try Again:</strong> Your passwords are not the same!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" required id="email_check">
-                <label class="form-check-label" for="email_check">I consent to receiving occasional emails</label>
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" required id="safe_check">
-                <label class="form-check-label" for="safe_check">By ticking this you agree to the following disclaimer: Merudite is committed to safeguarding and promoting the welfare of our pupils in school. All staff and volunteers must share this commitment. We believe that pupils have a right to learn in a supportive, caring and safe environment which includes the right to protection from all types of abuse; where staff are vigilant for signs of any pupil in distress and are confident about applying the processes to avert and alleviate any such problems. Safeguarding is about ensuring that everyone is safe from harm – safe from bullying, safe from people who could abuse, safe from discrimination or harassment – and that we all feel safe in our environment. Merudite has adopted policies, in line with recommendations from London Child Protection Procedures and Practice Guidance and Guidance from the London Borough of Merton Safeguarding Team.</label>
-              </div>
-              <div class="form-group regOrLogBtns">
-                <button type="button" class="btn btn-warning register"><strong>Register</strong></button>
-              </div>
-            </form>
-          </div>
-          <div class="card-body verifEmailCard" style="display: none;">
-            <h1 class="card-title"><strong>Verify your Email</strong></h1>
-            <p class="card-text">
-              There should be an email from us in your inbox with a handy link. <br>
-              Once you're done you're ready to begin!
-            </p>
-            <button type="button" class="btn btn-link resendVerifEmail">Resend Verification Email</button>
-            <a href="/personality"><button type="button" class="btn btn-lg btn-warning"><strong>Get Started</strong></button></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAVZ1f-Rd3Wv8f6lsses339gA6Rl0HOtGU",
-        authDomain: "merudite-13f42.firebaseapp.com",
-        databaseURL: "https://merudite-13f42.firebaseio.com",
-        projectId: "merudite-13f42",
-        storageBucket: "merudite-13f42.appspot.com",
-        messagingSenderId: "257736913099"
-      };
-      firebase.initializeApp(config);
-    </script>
-
-    <!-- Embedly -->
-    <script>
-      (function(w, d){
-       var id='embedly-platform', n = 'script';
-       if (!d.getElementById(id)){
-         w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
-         var e = d.createElement(n); e.id = id; e.async=1;
-         e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
-         var s = d.getElementsByTagName(n)[0];
-         s.parentNode.insertBefore(e, s);
-       }
-      })(window, document);
-    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
+    <link rel="stylesheet" href="/styles/override_index.css" type="text/css"></link>
 
     <!-- JQuery and Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </head>
 
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/checking.js"></script>
-    <script src="scripts/register.js"></script>
+  <body>
+    <!-- Navbar -->
+    <div class="menu">
+      <nav class="navbar navbar-inverse bg-inverse">
+        <a class="navbar-brand">
+          <object class="logo" data="/assets/logo.svg" type="image/svg+xml">Merudite Logo</object>
+        </a>
+      </nav>
+    </div>
+
+    <div class="container regContainer">
+      <h4 class="card-title"><strong>Start becoming more self-aware</strong></h4>
+      <form>
+        <div class="form_group">
+          <input type="email" class="form-control lineOnly" name="registerEmail" aria-describedby="emailHelp" placeholder="Email"></input>
+          <br></br>
+        </div>
+        <div class="form_group">
+          <input type="password" class="form-control lineOnly" name="registerPassword" aria-describedby="passHelp" placeholder="Password"></input>
+          <small class="form-text text-muted 8long" style="display: none;">At least 8 characters long</small>
+          <small class="form-text text-muted 1Lower" style="display: none;">At least one lowercase letter</small>
+          <small class="form-text text-muted 1Upper" style="display: none;">At least one uppercase letter</small>
+          <small class="form-text text-muted 1Number" style="display: none;">At least one number</small>
+          <br></br>
+        </div>
+        <div class="form_group">
+          <input type="password" class="form-control lineOnly" name="repeatPassword" placeholder="Confirm Password"></input>
+          <br></br>
+        </div>
+        <input type="checkbox" name="email" value="email"></input> I consent to receiving occasional emails<br></br>
+        <input type="checkbox" name="email" value="email"></input> By ticking this you agree to the following disclaimer: Merudite is committed to safeguarding and promoting the welfare of our pupils in school. All staff and volunteers must share this commitment. We believe that pupils have a right to learn in a supportive, caring and safe environment which includes the right to protection from all types of abuse; where staff are vigilant for signs of any pupil in distress and are confident about applying the processes to avert and alleviate any such problems. Safeguarding is about ensuring that everyone is safe from harm – safe from bullying, safe from people who could abuse, safe from discrimination or harassment – and that we all feel safe in our environment. Merudite has adopted policies, in line with recommendations from London Child Protection Procedures and Practice Guidance and Guidance from the London Borough of Merton Safeguarding Team.
+        <br></br>
+        <div class="form-group regOrLogBtns">
+          <button type="button" class="btn btn-warning register"><strong>Register</strong></button>
+        </div>
+
+      </form>
+    </div>
+
   </body>
 </html>
