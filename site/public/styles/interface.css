@@ -10,3 +10,7 @@ button.btn-warning:hover {
   background-color: #000080;
   border-color: #000080;
 }
+
+ul.navbar-nav.ml-auto.row {
+  margin-right: 2em;
+}

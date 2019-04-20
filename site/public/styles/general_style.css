@@ -5,13 +5,12 @@ body {
 .divider {
   width: 150px;
 }
+.crossbar {
+  width: 100%;
+}
 
 .logo {
   height: 50px;
-}
-
-.footer_bg {
-  width: 100%;
 }
 
 .text1 {
