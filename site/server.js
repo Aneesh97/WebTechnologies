@@ -25,9 +25,9 @@ function handle (req, res, next) {
   // Make the URL lower case.
   var url = req.url.toLowerCase();
   console.log("url=", req.url);
-  if (url.startsWith("/content.html")) get_content(url, res);
-  //Request from client side AJAX
-  else if (url == "/data") get_list(res);
+  // if (url.startsWith("/content.html")) get_content(url, res);
+  // //Request from client side AJAX
+  // else if (url == "/data") get_list(res);
   //else getFile(url, res);
   next();
 }

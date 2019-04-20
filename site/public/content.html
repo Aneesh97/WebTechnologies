@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
-    <link rel="stylesheet" href="/styles/override_index.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
@@ -24,90 +24,18 @@
   <!-- Main Content Page -->
   <body>
 
-    <div class="backgroundPic" style="display: none;">
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand">
-          <object class="logo" data="/assets/logo.svg" type="image/svg+xml">Merudite Logo</object>
-        </a>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <!-- Welcome page -->
-          <div class="col-md-7 jumbotron">
-            <h1 class="display-3">We are Merudite</h5>
-            <p>
-              Merudite is a digital tool that delivers curated learning plans based on personality types. Our curated content and interactive tools are focused on supporting young people to improve their self-awareness and well-being.
-            </p>
-            <br>
-            <p><small>© Merudite 2018</small></p>
-          </div>
-
-          <div class="col">
-            <!-- Login Form -->
-            <div class="row jumbotron loginJumbo">
-              <!-- Login -->
-              <form class="fullWidth loginFunc">
-                <h4>Already on the path?</h4>
-                <div class="form-group">
-                  <input required type="email" class="form-control lineOnly" id="loginEmail" placeholder="Email">
-                </div>
-                <div class="form-group">
-                  <input required type="password" class="form-control lineOnly" id="loginPassword" placeholder="Password">
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <input checked type="checkbox" id="rememberMe">
-                    <label for="rememberMe">Remember Me</label>
-                  </div>
-                  <div class="col">
-                    <button type="button" class="btn btn-link btn-sm forgotPassword">Forgot Password?</button>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button type="button" class="btn btn-primary login">Login</button>
-                </div>
-              </form>
-              <!-- Forgot Password -->
-              <form class="fullWidth forgotPassFunc" style="display: none;">
-                <h4>Reset your password</h4>
-                <div class="form-group">
-                  <input required type="email" class="form-control lineOnly" id="resetPassEmail" placeholder="Email">
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <button type="button" class="btn btn-link backToLogin">Go Back</button>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
-                      <button type="button" class="btn btn-primary sendResetEmail">Send Reset Email</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            <!-- Register Form -->
-            <div class="jumbotron regJumbo">
-              <h4><strong>Begin today</strong></h4>
-              <p>
-                Begin your journey.
-              </p>
-              <a href="/register"><button type="button" class="btn btn-lg btn-warning">Sign Up Now</button></a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Navbar -->
-    <nav class="mainNavbar navbar navbar-toggleable-sm navbar-inverse bg-inverse" style="display: none;">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+      <a class="navbar-brand" href="/">
+        <object class="logo" data="/assets/logo.svg" type="image/svg+xml">Merudite Logo</object>
+        Merudite
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand">
-        <object class="logo" data="/assets/logo.svg" type="image/svg+xml">Merudite Logo</object>
-      </a>
+
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
@@ -135,7 +63,7 @@
     </nav>
 
     <!-- Paths -->
-    <div class="container journey_container" style="display: none;">
+    <div class="container journey_container">
       <div class="learning_journey">
         <!-- Choose Content -->
         <h1 class="journey_title">Your Learning Journey</h1>
@@ -145,74 +73,39 @@
         <div class="row">
           <div class="col-2">
             <button type="button" class="btn btn-warning c_bt"><i class="fas fa-chart-pie"></i> Personality Test</button>
-            <div class="tick_one" style="display: none;">
+            <div class="tick_one">
               <i class="fas fa-check"></i>
             </div>
           </div>
           <div class="col-2">
             <button type="button" class="btn btn-warning video_bt c_bt"><i class="fas fa-video"></i> Video</button>
-            <div class="tick_two" style="display: none;">
-              <i class="fas fa-check"></i>
-            </div>
           </div>
           <div class="col-2">
             <button type="button" class="btn btn-warning podcast_bt c_bt"><i class="fas fa-podcast"></i> Podcast Snippet</button>
-            <div class="tick_three" style="display: none;">
-              <i class="fas fa-check"></i>
-            </div>
           </div>
           <div class="col-2">
             <button type="button" class="btn btn-warning article_bt c_bt"><i class="far fa-newspaper"></i> Article</button>
-            <div class="tick_four" style="display: none;">
-              <i class="fas fa-check"></i>
-            </div>
           </div>
           <div class="col-2">
             <button type="button" class="btn btn-warning book_bt c_bt"><i class="fas fa-book"></i> Book Excerpt</button>
-            <div class="tick_five" style="display: none;">
-              <i class="fas fa-check"></i>
-            </div>
           </div>
           <div class="col-2">
             <button type="button" class="btn btn-warning infographic_bt c_bt"><i class="far fa-question-circle"></i> Infographic</button>
-            <div class="tick_six" style="display: none;">
-              <i class="fas fa-check"></i>
-            </div>
           </div>
         </div>
 
       </div>
 
       <!-- Chosen Content -->
-      <div class="container content_container" style="display: none; padding-top: 2em;">
+      <div class="container content_container">
         <div class="row">
           <button type="button" class="btn btn-link goBack">Go Back</button>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-xl-7 content" style="margin-top: 0.5em;">
-            <div class="video" style="display: none;">
-              <blockquote class="embedly-card" data-card-key="0b81bfecc71e4200a7b66e8475564f63" data-card-controls="0"><h4><a href="https://www.youtube.com/watch?v=DxIDKZHW3-E&feature=youtu.be">We All Have Mental Health</a></h4><p>Download the accompanying teacher toolkit from https://www.annafreud.org/wahmhtoolkit It's free! We All Have Mental Health is an animation designed to give young people aged 11-14 a common language and understanding of what we mean by mental health and how we can look after it.</p></blockquote>
-              <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-            </div>
-            <div class="podcast" style="display: none;">
-              <blockquote class="embedly-card" data-card-key="0b81bfecc71e4200a7b66e8475564f63" data-card-controls="0"><h4><a href="https://www.youtube.com/watch?v=fM3hXj6HtYs">UNDERSTANDING YOURSELF Jordan Peterson (JRE877)</a></h4><p>Jordan Peterson presents an excellent way for you to understand yourself and be free from the ghosts and pain of the past. This clip was taken from the Joe Rogan Experience #877.</p></blockquote>
-              <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-            </div>
-            <div class="article" style="display: none;">
-              <blockquote class="embedly-card" data-card-key="0b81bfecc71e4200a7b66e8475564f63" data-card-controls="0" data-card-type="article-full"><h4><a href="https://medium.com/@garyvee/we-need-to-talk-about-the-importance-of-self-awareness-6202135bd244">We Need to Talk About the Importance of Self-Awareness</a></h4><p>There is something that is rarely talked about in the business world and I want to start building more attention for it. That thing is self-awareness. I'm upset that the narrative these days is that everyone needs to be number one, own a company, be in charge.</p></blockquote>
-              <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-            </div>
-            <div class="book" style="display: none;">
-              <h4>Tools of Titans, by Tim Ferris:</h4>
-              <p>In my interview with Arnold Schwarzenegger, I brought up a photo of him at age 19, just before he won his first big competition, Junior Mr. Europe. I asked, “Your face was so confident compared to every other competitor. Where did that confidence come from?” He replied:</p>
-              <p>“My confidence came from my vision … I am a big believer that if you have a very clear vision of where you want to go, then the rest of it is much easier. Because you always know why you are training five hours a day, you always know why you are pushing and going through the pain barrier, and why you have to eat more, and why you have to struggle more, and why you have to be more disciplined … I felt that I could win it, and that was what I was there for. I wasn’t there to compete. I was there to win.”</p>
-            </div>
-            <div class="infographic" style="display: none;">
-              <a class="embedly-card" data-card-key="0b81bfecc71e4200a7b66e8475564f63" data-card-controls="0" href="https://www.rootsofaction.com/wp-content/uploads/2017/03/Self-Awareness-Revised-650w.png">(null)</a>
-              <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-            </div>
+          <div class="col-lg-8 col-xl-7 content">
+
           </div>
-          <div class="card text-center col" style="margin: 0.5em 1em;">
+          <div class="card text-center col" >
             <div class="card-body">
               <h4 class="prompt"></h4>
               <form class="fullWidth">
