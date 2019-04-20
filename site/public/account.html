@@ -12,19 +12,20 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <!-- Navbar -->
-    <div class="menu">
+    <header>
+      <!-- Navbar -->
       <nav class="navbar navbar-expand-md navbar-light">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand">
           <object class="logo" data="/assets/logowithtext.svg" type="image/svg+xml">Merudite Logo</object>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,27 +34,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link digest" href="/"><i class="fas fa-pen-nib"></i> Your Journey</a>
+              <a class="nav-link digest" href="/journey.html"><i class="fas fa-pen-nib"></i> Your Journey</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link journal" href="/journal"><i class="fas fa-book"></i> Journal</a>
+              <a class="nav-link journal" href="/journal.html"><i class="fas fa-book"></i> Journal</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link results" href="/results"><i class="fas fa-chart-pie"></i> My Results</a>
+              <a class="nav-link results" href="/results.html"><i class="fas fa-chart-pie"></i> My Results</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link account dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown active">
+              <a class="nav-link account dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user-cog"></i> Account
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/account">Edit Details</a>
+                <a class="dropdown-item" href="/account.html">Edit Details</a>
                 <a class="dropdown-item logOut" href="/">Log Out</a>
               </div>
             </li>
           </ul>
         </div>
       </nav>
-    </div>
+    </header>
 
     <!-- User Information -->
     <div class="container" style="margin-top: 2em;">
@@ -106,7 +107,26 @@
     <!-- Footer -->
     <footer>
       <div class="footer">
+
         <object class="footer_bg" data="/assets/footer.svg" type="image/svg+xml">Footer Design</object>
+        <div class="footer_content container">
+          <div class="row">
+            <div class="col-md-5">
+              <p>Privacy policy</p>
+              <p>Privacy policy</p>
+              <p>Privacy policy</p>
+              <p>Privacy policy</p>
+              <p>Privacy policy</p>
+              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
+              <p><small>© Merudite 2018</small></p>
+            </div>
+            <div class="col">
+              <h1 class="display-5">Want to know more?</h1>
+              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
+              <p>Sign up to our mailing list to receive a free well-being video and updates on what we're doing.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
 

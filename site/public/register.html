@@ -11,6 +11,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
 
     <!-- JQuery and Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -19,8 +20,8 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-    <div class="menu">
+    <header>
+      <!-- Navbar -->
       <nav class="navbar navbar-expand-md navbar-light">
         <a class="navbar-brand" href="/">
           <object class="logo" data="/assets/logowithtext.svg" type="image/svg+xml">Merudite Logo</object>
@@ -28,8 +29,27 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto row">
+            <li class="nav-item align-self-center">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item align-self-center">
+              <a class="nav-link" href="/product.html">Product</a>
+            </li>
+            <li class="nav-item align-self-center">
+              <a class="nav-link" href="/about.html">Team</a>
+            </li>
+            <li class="nav-item align-self-center">
+              <a class="nav-link" href="/login.html">Log In</a>
+            </li>
+            <li class="nav-item active align-self-center">
+              <a class="nav-link" href="/register.html"><button type="button" class="btn btn-warning">Register</button></a>
+            </li>
+          </ul>
+        </div>
       </nav>
-    </div>
+    </header>
 
     <div class="container regContainer">
       <h4 class="card-title"><strong>Start becoming more self-aware</strong></h4>
@@ -53,8 +73,8 @@
         <input type="checkbox" name="email" value="email"></input> I consent to receiving occasional emails<br></br>
         <input type="checkbox" name="email" value="email"></input> By ticking this you agree to the following disclaimer: Merudite is committed to safeguarding and promoting the welfare of our pupils in school. All staff and volunteers must share this commitment. We believe that pupils have a right to learn in a supportive, caring and safe environment which includes the right to protection from all types of abuse; where staff are vigilant for signs of any pupil in distress and are confident about applying the processes to avert and alleviate any such problems. Safeguarding is about ensuring that everyone is safe from harm – safe from bullying, safe from people who could abuse, safe from discrimination or harassment – and that we all feel safe in our environment. Merudite has adopted policies, in line with recommendations from London Child Protection Procedures and Practice Guidance and Guidance from the London Borough of Merton Safeguarding Team.
         <br></br>
-        <div class="form-group regOrLogBtns">
-          <button type="button" class="btn btn-warning register"><strong>Register</strong></button>
+        <div class="form-group reg_button">
+          <a href="/journey.html"><button type="button" class="btn btn-lg btn-warning register">Register</button></a>
         </div>
 
       </form>
