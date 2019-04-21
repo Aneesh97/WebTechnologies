@@ -1,24 +1,26 @@
 body {
   color: #000080;
 }
-
 .divider {
   width: 150px;
 }
 .crossbar {
   width: 100%;
 }
-
 .logo {
   height: 50px;
 }
-
-.text1 {
+.section_text {
   padding-top: 3em;
 }
-
 .pic {
   width: 100%;
+}
+
+.testimonials {
+  height: 15em;
+  background-color: ghostwhite;
+  margin-bottom: 3em;
 }
 
 /* Footer styling */
@@ -34,6 +36,9 @@ object.footer_bg {
   color: #FFF;
   position: relative;
   height: 0;
-  bottom: 25em;
+  bottom: 30em;
   z-index: 2;
+}
+.footer_link{
+  color: #FFF;
 }
