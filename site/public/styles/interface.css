@@ -1,6 +1,6 @@
-
+/* Buttons */
 button.btn-warning {
-  color: #000080;
+  color: #FFF;
   border-radius: 25px;
   background-color: #FFAB0D;
   border-color: #FFAB0D;
@@ -10,7 +10,39 @@ button.btn-warning:hover {
   background-color: #000080;
   border-color: #000080;
 }
-
-ul.navbar-nav.ml-auto.row {
-  margin-right: 2em;
+button.btn-danger {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-danger:hover {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-secondary {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-secondary:hover {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-info {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-info:hover {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-success {
+  color: #FFF;
+  border-radius: 25px;
+}
+button.btn-success:hover {
+  color: #FFF;
+  border-radius: 25px;
+}
+.form_group {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }

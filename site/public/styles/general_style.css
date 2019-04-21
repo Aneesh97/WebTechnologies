@@ -1,36 +1,64 @@
+/* Whole Body styles */
 body {
   color: #000080;
 }
+/* Header styling */
+.logo {
+  height: 50px;
+}
+ul.navbar-nav.ml-auto.row {
+  margin-right: 2em;
+}
+
+/* Contextual elements */
 .divider {
   width: 150px;
 }
 .crossbar {
   width: 100%;
 }
-.logo {
-  height: 50px;
+.social_button {
+  color: #FFF;
+  border-radius: 50%;
 }
-.section_text {
-  padding-top: 3em;
+.social_button:hover {
+  color: #FFF;
 }
-.pic {
-  width: 100%;
+.social1 {
+  background-color: #4169E1;
+  border-color: #4169E1;
 }
-
-.testimonials {
-  height: 15em;
-  background-color: ghostwhite;
-  margin-bottom: 3em;
+.social1:hover {
+  background-color: #000080;
+  border-color: #000080;
+}
+.social2 {
+  background-color: #FFAB0D;
+  border-color: #FFAB0D;
+}
+.social2:hover {
+  background-color: #000080;
+  border-color: #000080;
+}
+.social3 {
+  background-color: #000080;
+  border-color: #000080;
+}
+.social3:hover {
+  background-color: #4169E1;
+  border-color: #4169E1;
 }
 
 /* Footer styling */
 .footer {
   position: absolute;
   width: 100%;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,1));
+  z-index: -1;
 }
 object.footer_bg {
   position: relative;
-  z-index: -1;
+  z-index: 1;
 }
 .footer_content {
   color: #FFF;

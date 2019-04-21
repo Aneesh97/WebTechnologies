@@ -1,0 +1,7 @@
+.form-text {
+  margin: 0.25em;
+}
+.check_passed {
+  color: green;
+  font-weight: bold;
+}

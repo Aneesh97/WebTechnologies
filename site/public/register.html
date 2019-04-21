@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
     <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/reg.css" type="text/css"></link>
 
     <!-- JQuery and Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/scripts/reg.js" defer="defer" type="text/javascript"></script>
+
   </head>
 
   <body>
@@ -51,32 +54,39 @@
       </nav>
     </header>
 
-    <div class="container regContainer">
-      <h4 class="card-title"><strong>Start becoming more self-aware</strong></h4>
+    <div class="container">
+      <h1 class="card-title display-4">Start becoming more self-aware</h1>
       <form>
         <div class="form_group">
-          <input type="email" class="form-control lineOnly" name="registerEmail" aria-describedby="emailHelp" placeholder="Email"></input>
-          <br></br>
+          <input type="email" class="form-control" id="register_email" aria-describedby="emailHelp" placeholder="Email"></input>
         </div>
         <div class="form_group">
-          <input type="password" class="form-control lineOnly" name="registerPassword" aria-describedby="passHelp" placeholder="Password"></input>
-          <small class="form-text text-muted 8long" style="display: none;">At least 8 characters long</small>
-          <small class="form-text text-muted 1Lower" style="display: none;">At least one lowercase letter</small>
-          <small class="form-text text-muted 1Upper" style="display: none;">At least one uppercase letter</small>
-          <small class="form-text text-muted 1Number" style="display: none;">At least one number</small>
-          <br></br>
+          <input type="password" class="form-control" id="register_password" aria-describedby="passHelp" placeholder="Password"></input>
+          <div class="pass_checks row text-center">
+            <div class="col">
+              <p class="small form-text text-muted 8long">8 characters long</p>
+            </div>
+            <div class="col">
+              <p class="small form-text text-muted 1Lower">one lowercase letter</p>
+            </div>
+            <div class="col">
+              <p class="small form-text text-muted 1Upper">one uppercase letter</p>
+            </div>
+            <div class="col">
+              <p class="small form-text text-muted 1Number">one number</p>
+            </div>
+          </div>
         </div>
         <div class="form_group">
-          <input type="password" class="form-control lineOnly" name="repeatPassword" placeholder="Confirm Password"></input>
-          <br></br>
+          <input type="password" class="form-control" id="repeat_password" placeholder="Confirm Password"></input>
         </div>
-        <input type="checkbox" name="email" value="email"></input> I consent to receiving occasional emails<br></br>
-        <input type="checkbox" name="email" value="email"></input> By ticking this you agree to the following disclaimer: Merudite is committed to safeguarding and promoting the welfare of our pupils in school. All staff and volunteers must share this commitment. We believe that pupils have a right to learn in a supportive, caring and safe environment which includes the right to protection from all types of abuse; where staff are vigilant for signs of any pupil in distress and are confident about applying the processes to avert and alleviate any such problems. Safeguarding is about ensuring that everyone is safe from harm – safe from bullying, safe from people who could abuse, safe from discrimination or harassment – and that we all feel safe in our environment. Merudite has adopted policies, in line with recommendations from London Child Protection Procedures and Practice Guidance and Guidance from the London Borough of Merton Safeguarding Team.
-        <br></br>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="signup_data_consent"></input>
+          <label class="form-check-label" for="data_consent">I consent to receiving occasional emails</label>
+        </div>
         <div class="form-group reg_button">
           <a href="/journey.html"><button type="button" class="btn btn-lg btn-warning register">Register</button></a>
         </div>
-
       </form>
     </div>
 

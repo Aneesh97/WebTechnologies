@@ -1,8 +1,12 @@
+"use strict";
+
 // Sample express web server.  Supports the same features as the provided server,
 // and demonstrates a big potential security loophole in express.
 
 var express = require("express");
 var app = express();
+//Helmet provides some security stuff
+var helmet = require('helmet');
 var fs = require("fs");
 var sql = require("sqlite3");
 var db = new sql.Database("data.db");
@@ -12,8 +16,10 @@ banUpperCase("./public/", "");
 // Define the sequence of functions to be called for each request.  Make URLs
 // lower case, ban upper case filenames, require authorisation for admin.html,
 // and deliver static files from ./public.
+app.use(helmet());
 app.use(handle);
-app.use(ban)
+app.use(ban);
+app.use(block_doubleslash);
 app.use("/admin.html", auth);
 var options = { setHeaders: deliverXHTML };
 app.use(express.static("public", options));
@@ -80,6 +86,16 @@ function ban(req, res, next) {
         }
     }
     next();
+}
+
+//Block users being able to skirt server rules using double slash
+function block_doubleslash(req, res, next) {
+  if (req.url.indexOf("//") > 0) {
+    console.log("double backslash found");
+    res.status(404).send("Double slash blocked");
+    return;
+  }
+  next();
 }
 
 // Redirect the browser to the login page.

@@ -1,0 +1,12 @@
+/* Styling specific to the index page */
+.section_text {
+  padding-top: 3em;
+}
+.pic {
+  width: 100%;
+}
+.testimonials {
+  height: 15em;
+  background-color: ghostwhite;
+  margin-bottom: 3em;
+}
