@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
     <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/pass_checks.css" type="text/css"></link>
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
@@ -20,6 +21,8 @@
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="/scripts/load.js" defer="defer" type="text/javascript"></script>
+    <script src="/scripts/checks.js" defer="defer" type="text/javascript"></script>
+    <script src="/scripts/account.js" defer="defer" type="text/javascript"></script>
 
   </head>
 
@@ -61,49 +64,58 @@
     <div class="page_content">
       <!-- User Information -->
       <div class="container">
-        <div class="alert alert-success emailSuccessful" role="alert">
-          <strong>Email changed successfully!</strong> Please use the link in the email we've sent to verify your new email address! Can't find it?
-          <button type="button" class="btn btn-sm btn-link sendAnotherVerifyEmail">Send Another</button>
+        <div class="alert alert-success email_success hidden" role="alert">
+          Email changed successfully! Please use the link in the email we've sent to verify your new email address! Can't find it?
+          <button type="button" class="btn btn-link resend_verify_email">Send Another</button>
         </div>
-        <div class="alert alert-danger emailUnsuccessful" role="alert">
+        <div class="alert alert-danger email_fail hidden" role="alert">
           Email change unsuccessful! Please try again.
         </div>
-        <div class="alert alert-success passSuccessful" role="alert">
+        <div class="alert alert-success pass_success hidden" role="alert">
           Password changed successfully!
         </div>
-        <div class="alert alert-danger passUnsuccessful" role="alert">
+        <div class="alert alert-danger pass_fail hidden" role="alert">
           Password change unsuccessful! Please try again.
         </div>
         <form>
           <div class="form-group">
             <label for="changeEmail">Change your email</label>
-            <input type="email" class="form-control" id="changeEmail" aria-describedby="emailHelp" placeholder="New email"/>
+            <input type="email" class="form-control" id="change_email" aria-describedby="emailHelp" placeholder="New email"/>
           </div>
           <div class="form-group">
-            <label for="changePassword">Change your password</label>
-            <input type="password" class="form-control" id="changePassword" placeholder="New password"/>
-            <small class="form-text text-muted 8long">At least 8 characters long</small>
-            <small class="form-text text-muted 1Lower">At least one lowercase letter</small>
-            <small class="form-text text-muted 1Upper">At least one uppercase letter</small>
-            <small class="form-text text-muted 1Number">At least one number</small>
+            <label for="new_password">Change your password</label>
+            <input type="password" class="form-control" id="pass_to_check" aria-describedby="passHelp" placeholder="New Password"></input>
+            <div class="pass_checks row text-center">
+              <div class="col">
+                <p class="small form-text text-muted 8long">8 characters long</p>
+              </div>
+              <div class="col">
+                <p class="small form-text text-muted 1Lower">one lowercase letter</p>
+              </div>
+              <div class="col">
+                <p class="small form-text text-muted 1Upper">one uppercase letter</p>
+              </div>
+              <div class="col">
+                <p class="small form-text text-muted 1Number">one number</p>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="oldPassword">Please confirm your current password</label>
-            <input type="password" class="form-control" id="oldPassword" placeholder="Old password"/>
+            <input type="password" class="form-control" id="old_pass" placeholder="Old password"/>
           </div>
-          <button type="button" class="btn btn-lg btn-warning submitAccountChanges">Submit</button>
+          <button type="button" class="btn btn-lg btn-warning submit_acc_changes">Submit</button>
         </form>
-        <br></br>
-        <button type="button" class="btn btn-sm btn-link deleteAccountInit">Delete Account</button>
-        <div class="jumbotron deleteAccountJumbo">
+        <button type="button" class="btn btn-sm btn-link delete_init">Delete Account</button>
+        <div class="jumbotron confirm_delete hidden">
           <h1 class="display-6">Are you sure?</h1>
           <p class="lead">If you delete your account, you'll lose access to our curated selection of useful content, and all your journal entries will be removed too!</p>
           <hr class="my-4"></hr>
           <p>We'll be sad to see you go, but if you really want to, please enter your password and click the button below to delete your account.</p>
           <div class="form-group">
-            <input type="password" class="form-control" id="deletePassword" placeholder="Password"/>
+            <input type="password" class="form-control" id="del_pass" placeholder="Password"/>
           </div>
-          <button type="button" class="btn btn-danger btn-lg deleteAccountConfirm">Delete My Account</button>
+          <button type="button" class="btn btn-danger btn-lg final_delete_button">Delete My Account</button>
         </div>
       </div>
     </div>

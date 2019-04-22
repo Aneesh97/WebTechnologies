@@ -1,3 +1,4 @@
+//Functionality for the personality test page
 "use strict";
 console.log("personality script starting");
 //Global variables for text functionality

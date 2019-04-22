@@ -1,6 +1,7 @@
+//Questions for the personality test
 "use strict";
 
-var questions = [
+let questions = [
   'I am the life of the party',
   'I don\'t care about other people',
   'I am always prepared',

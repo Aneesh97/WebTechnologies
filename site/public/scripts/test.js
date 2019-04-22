@@ -1,3 +1,4 @@
+//Basic script, for testing server/DB/frontend coordination
 "use strict";
 console.log("script starting");
 
