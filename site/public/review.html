@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
     <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/review.css" type="text/css"></link>
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
@@ -20,6 +21,8 @@
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="/scripts/load.js" defer="defer" type="text/javascript"></script>
+    <script src="/scripts/results.js" defer="defer" type="text/javascript"></script>
+    
   </head>
   <!-- Parent Review Mode -->
   <body class="hidden">
@@ -63,13 +66,13 @@
 
         <div class="row">
           <!-- Class Average Results -->
-          <div class="col card" style="padding: 2em;">
-            <h4>Class Average Results</h4>
+          <div class="col card">
+            <h4>User Average Results</h4>
 
             <div class="ope" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ope_collapse">
               Openness to Experience<span class='o_perc'> - 42%</span>
-              <div class="progress result_bar" style="height: 5px;">
-                <div class="progress-bar progress-bar-striped bg-danger openness" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress result_bar">
+                <div class="progress-bar bg-danger openness" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="collapse" id="ope_collapse">
                 <div class="card card-body small">
@@ -81,8 +84,8 @@
 
             <div class="con" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="con_collapse">
               Conscientiousness<span class='c_perc'> - 39%</span>
-              <div class="progress result_bar" style="height: 5px;">
-                <div class="progress-bar progress-bar-striped bg-info conscientiousness" role="progressbar" style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress result_bar">
+                <div class="progress-bar bg-info conscientiousness" role="progressbar" style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="collapse" id="con_collapse">
                 <div class="card card-body small">
@@ -94,8 +97,8 @@
 
             <div class="ext" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ext_collapse">
               Extraversion<span class='e_perc'> - 54%</span>
-              <div class="progress result_bar" style="height: 5px;">
-                <div class="progress-bar progress-bar-striped extraversion" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress result_bar">
+                <div class="progress-bar extraversion" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="collapse" id="ext_collapse">
                 <div class="card card-body small">
@@ -107,8 +110,8 @@
 
             <div class="agr" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="agr_collapse">
               Agreeableness<span class='a_perc'> - 35%</span>
-              <div class="progress result_bar" style="height: 5px;">
-                <div class="progress-bar progress-bar-striped bg-success agreeableness" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress result_bar">
+                <div class="progress-bar bg-success agreeableness" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="collapse" id="agr_collapse">
                 <div class="card card-body small">
@@ -120,8 +123,8 @@
 
             <div class="neu" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="neu_collapse">
               Neuroticism<span class='n_perc'> - 67%</span>
-              <div class="progress result_bar" style="height: 5px;">
-                <div class="progress-bar progress-bar-striped bg-warning neuroticism" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress result_bar">
+                <div class="progress-bar bg-warning neuroticism" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="collapse" id="neu_collapse">
                 <div class="card card-body small">
@@ -134,8 +137,8 @@
           <!-- Results Summary -->
           <div class="col card">
             <h4>Results Summary</h4>
-            <p>Class has highest score in: <strong>Neuroticism at 67%</strong></p>
-            <p>Class has lowest score in: <strong>Agreeableness at 35%</strong></p>
+            <p>User average highest score in: <strong>Neuroticism at 67%</strong></p>
+            <p>User average lowest score in: <strong>Agreeableness at 35%</strong></p>
             <p>Next lesson we suggest focusing on Mindfulness and Meditation. Some recommended content and an example lesson plan can be found below.</p>
             <button type="button" class="btn btn-warning">View Suggested Lesson Plan</button>
           </div>
@@ -147,36 +150,36 @@
             <div class="progress">
               <div class="progress-bar bg-success journey_bar" role="progressbar" style="width: 16%" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <div class="row">
+            <div class="row text-center">
               <div class="col-2">
-                <button type="button" class="btn btn-sm btn-primary small">Week 1</button>
+                <button type="button" class="btn btn-sm btn-primary small">1</button>
               </div>
               <div class="col-2">
-                <button type="button" class="btn btn-sm btn-primary small">Week 2</button>
+                <button type="button" class="btn btn-sm btn-primary small">2</button>
               </div>
               <div class="col-2">
-                <button type="button" class="btn btn-sm btn-primary small">Week 3</button>
+                <button type="button" class="btn btn-sm btn-primary small">3</button>
               </div>
               <div class="col-2">
-                <button type="button" class="btn btn-sm btn-primary small">Week 4</button>
+                <button type="button" class="btn btn-sm btn-primary small">4</button>
               </div>
               <div class="col-2">
-                <button type="button" class="btn btn-sm btn-primary small">Week 5</button>
+                <button type="button" class="btn btn-sm btn-primary small">5</button>
               </div>
               <div class="col-2">
-                <button type="button" class="btn btn-sm btn-primary small">Week 6</button>
+                <button type="button" class="btn btn-sm btn-primary small">6</button>
               </div>
             </div>
           </div>
           <!-- Lesson Feedback -->
           <div class="col card">
             <h4>Feedback</h4>
-            <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50% <i class="fas fa-smile-beam"></i></div>
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30% <i class="fas fa-meh"></i></div>
-              <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20% <i class="fas fa-frown-open"></i></div>
+            <div class="progress rating_bar">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><i class="fas fa-smile-beam"></i></div>
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><i class="fas fa-meh"></i></div>
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><i class="fas fa-frown-open"></i></div>
             </div>
-            <p>50% of students rated this week positively!</p>
+            <p>50% of users rated this week positively!</p>
           </div>
         </div>
         <div class="row">
@@ -184,25 +187,29 @@
           <div class="col card">
             <h4>Support Needed</h4>
             <div class="row">
-              <div class="col-3 card">
+              <div class="col-1">
+              </div>
+              <div class="col card support_card">
                 <h6>Jimmy</h6>
                 <p class="small">Didn't complete learning journey this week</p>
                 <button type="button" class="btn btn-sm btn-warning small">View</button>
               </div>
-              <div class="col-3 card">
+              <div class="col card support_card">
                 <h6>Sally</h6>
                 <p class="small">Reacted negatively to content this week</p>
                 <button type="button" class="btn btn-sm btn-warning small">View</button>
               </div>
-              <div class="col-3 card">
+              <div class="col card support_card">
                 <h6>David</h6>
                 <p class="small">Has not yet completed personality test</p>
                 <button type="button" class="btn btn-sm btn-warning small">View</button>
               </div>
-              <div class="col-3 card">
-                <h6>Mohammed</h6>
+              <div class="col card support_card">
+                <h6>Ethel</h6>
                 <p class="small">Didn't complete learning journey this week</p>
                 <button type="button" class="btn btn-sm btn-warning small">View</button>
+              </div>
+              <div class="col-1">
               </div>
             </div>
           </div>
@@ -213,7 +220,7 @@
             <button type="button" class="btn btn-danger ">Resolve</button>
           </div>
         </div>
-        <a href="/results.html"><button type="button" class="btn btn-link">Switch to Student View</button></a>
+        <a href="/results.html"><button type="button" class="btn btn-link">Switch to User View</button></a>
       </div>
     </div>
 

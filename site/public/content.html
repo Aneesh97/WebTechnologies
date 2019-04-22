@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
   <head>
-    <meta charset="UTF-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content="Build a meaningful future"></meta>
     <title>Merudite</title>
 
     <!-- STYLESHEETS -->
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
     <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
-    <link rel="stylesheet" href="/styles/journal.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/journey.css" type="text/css"></link>
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
@@ -21,10 +22,8 @@
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="/scripts/load.js" defer="defer" type="text/javascript"></script>
-    <script src="/scripts/journal.js" defer="defer" type="text/javascript"></script>
   </head>
-
-
+  <!-- Main Content Page -->
   <body class="hidden">
     <header>
       <!-- Navbar -->
@@ -38,10 +37,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link digest" href="/journey.html"><i class="fas fa-pen-nib"></i> Your Journey</a>
+              <a class="nav-link digest active" href="/journey.html"><i class="fas fa-pen-nib"></i> Your Journey</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link journal active" href="/journal.html"><i class="fas fa-book"></i> Journal</a>
+              <a class="nav-link journal" href="/journal.html"><i class="fas fa-book"></i> Journal</a>
             </li>
             <li class="nav-item">
               <a class="nav-link results" href="/results.html"><i class="fas fa-chart-pie"></i> My Results</a>
@@ -61,56 +60,35 @@
     </header>
 
     <div class="page_content">
-      <!-- User Journal -->
-      <div class="container journal_container">
+      <!-- Paths -->
+      <div class="container">
+        <div class="learning_journey text-center">
+          <h1 class="journey_title">Your Learning Journey</h1>
 
-        <div class="row journal_entry">
-          <div class="col col-md-3">
-            <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-          </div>
-          <div class="col">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
+          <div class="content_container">
+            <div class="row">
+
+              <div class="col-lg-8 col-xl-7 content">
+                <iframe class="video_content" src="https://www.youtube.com/embed/NpEaa2P7qZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+              </div>
+
+              <div class="text-center col" >
+                <h4 class="prompt">Exemplar Prompt</h4>
+                <form class="journal_entry">
+                  <div class="form-group">
+                    <textarea class="form-control content_thoughts" placeholder="I think that..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-warning save_to_journal">Save to Journal</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
           </div>
         </div>
-
-        <div class="row journal_entry">
-          <div class="col col-md-3">
-            <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-          </div>
-          <div class="col">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-          </div>
-        </div>
-
-        <div class="row journal_entry">
-          <div class="col col-md-3">
-            <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-          </div>
-          <div class="col">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-          </div>
-        </div>
-
-        <div class="row journal_entry">
-          <div class="col col-md-3">
-            <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-          </div>
-          <div class="col">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-          </div>
-        </div>
-
       </div>
     </div>
-
 
     <!-- Footer -->
     <footer>

@@ -1,0 +1,18 @@
+.journey_item_bg {
+}
+
+.journey_carousel_container {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+.video_content {
+  height: 25em;
+  width: 100%;
+}
+.journal_entry {
+  height: 25em;
+}
+textarea.form-control.content_thoughts {
+  height: 15em;
+}

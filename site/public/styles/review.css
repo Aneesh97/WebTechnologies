@@ -1,0 +1,12 @@
+div.col.card {
+  padding: 0.5em;
+}
+.result_bar {
+  height: 0.5em;
+}
+.rating_bar {
+}
+.support_card {
+  padding: 0.5em;
+  font-size: small;
+}
