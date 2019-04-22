@@ -58,52 +58,54 @@
       </nav>
     </header>
 
-    <!-- User Information -->
-    <div class="container" style="margin-top: 2em;">
-      <div class="alert alert-success emailSuccessful" role="alert" style="display: none;">
-        <strong>Email changed successfully!</strong> Please use the link in the email we've sent to verify your new email address! Can't find it?
-        <button type="button" class="btn btn-sm btn-link sendAnotherVerifyEmail">Send Another</button>
-      </div>
-      <div class="alert alert-danger emailUnsuccessful" role="alert" style="display: none;">
-        Email change unsuccessful! Please try again.
-      </div>
-      <div class="alert alert-success passSuccessful" role="alert" style="display: none;">
-        Password changed successfully!
-      </div>
-      <div class="alert alert-danger passUnsuccessful" role="alert" style="display: none;">
-        Password change unsuccessful! Please try again.
-      </div>
-      <form>
-        <div class="form-group">
-          <label for="changeEmail">Change your email</label>
-          <input type="email" class="form-control" id="changeEmail" aria-describedby="emailHelp" placeholder="New email"/>
+    <div class="page_content">
+      <!-- User Information -->
+      <div class="container">
+        <div class="alert alert-success emailSuccessful" role="alert">
+          <strong>Email changed successfully!</strong> Please use the link in the email we've sent to verify your new email address! Can't find it?
+          <button type="button" class="btn btn-sm btn-link sendAnotherVerifyEmail">Send Another</button>
         </div>
-        <div class="form-group">
-          <label for="changePassword">Change your password</label>
-          <input type="password" class="form-control" id="changePassword" placeholder="New password"/>
-          <small class="form-text text-muted 8long" style="display: none;">At least 8 characters long</small>
-          <small class="form-text text-muted 1Lower" style="display: none;">At least one lowercase letter</small>
-          <small class="form-text text-muted 1Upper" style="display: none;">At least one uppercase letter</small>
-          <small class="form-text text-muted 1Number" style="display: none;">At least one number</small>
+        <div class="alert alert-danger emailUnsuccessful" role="alert">
+          Email change unsuccessful! Please try again.
         </div>
-        <div class="form-group">
-          <label for="oldPassword">Please confirm your current password</label>
-          <input type="password" class="form-control" id="oldPassword" placeholder="Old password"/>
+        <div class="alert alert-success passSuccessful" role="alert">
+          Password changed successfully!
         </div>
-        <button type="button" class="btn btn-lg btn-warning submitAccountChanges">Submit</button>
-      </form>
-      <br></br>
-      <button type="button" class="btn btn-sm btn-link deleteAccountInit">Delete Account</button>
-      <!-- <div class="jumbotron deleteAccountJumbo" style="display: none;">
-        <h1 class="display-6">Are you sure?</h1>
-        <p class="lead">If you delete your account, you'll lose access to our curated selection of useful content, and all your journal entries will be removed too!</p>
-        <hr class="my-4">
-        <p>We'll be sad to see you go, but if you really want to, please enter your password and click the button below to delete your account.</p>
-        <div class="form-group">
-          <input type="password" class="form-control" id="deletePassword" placeholder="Password"/>
+        <div class="alert alert-danger passUnsuccessful" role="alert">
+          Password change unsuccessful! Please try again.
         </div>
-        <button type="button" class="btn btn-danger btn-lg deleteAccountConfirm">Delete My Account</button>
-      </div> -->
+        <form>
+          <div class="form-group">
+            <label for="changeEmail">Change your email</label>
+            <input type="email" class="form-control" id="changeEmail" aria-describedby="emailHelp" placeholder="New email"/>
+          </div>
+          <div class="form-group">
+            <label for="changePassword">Change your password</label>
+            <input type="password" class="form-control" id="changePassword" placeholder="New password"/>
+            <small class="form-text text-muted 8long">At least 8 characters long</small>
+            <small class="form-text text-muted 1Lower">At least one lowercase letter</small>
+            <small class="form-text text-muted 1Upper">At least one uppercase letter</small>
+            <small class="form-text text-muted 1Number">At least one number</small>
+          </div>
+          <div class="form-group">
+            <label for="oldPassword">Please confirm your current password</label>
+            <input type="password" class="form-control" id="oldPassword" placeholder="Old password"/>
+          </div>
+          <button type="button" class="btn btn-lg btn-warning submitAccountChanges">Submit</button>
+        </form>
+        <br></br>
+        <button type="button" class="btn btn-sm btn-link deleteAccountInit">Delete Account</button>
+        <div class="jumbotron deleteAccountJumbo">
+          <h1 class="display-6">Are you sure?</h1>
+          <p class="lead">If you delete your account, you'll lose access to our curated selection of useful content, and all your journal entries will be removed too!</p>
+          <hr class="my-4"></hr>
+          <p>We'll be sad to see you go, but if you really want to, please enter your password and click the button below to delete your account.</p>
+          <div class="form-group">
+            <input type="password" class="form-control" id="deletePassword" placeholder="Password"/>
+          </div>
+          <button type="button" class="btn btn-danger btn-lg deleteAccountConfirm">Delete My Account</button>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->

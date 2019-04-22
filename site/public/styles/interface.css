@@ -46,7 +46,16 @@ button.btn-success:hover {
   background-color: #000080;
   border-color: #000080;
 }
+a:hover{
+    text-decoration: none;
+}
+button {
+  outline: none;
+}
 .form_group {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+textarea {
+  resize: none;
 }

@@ -8,7 +8,7 @@ body {
           animation: fadein 1s;
 }
 .page_content {
-  min-height: 20em;
+  min-height: 30em;
 }
 @keyframes fadein {
     from { opacity: 0; }
