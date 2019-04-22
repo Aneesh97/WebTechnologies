@@ -13,18 +13,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
     <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/pers_test.css" type="text/css"></link>
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
     <script defer="defer" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="/scripts/test.js" defer="defer" type="text/javascript"></script>
+    <script src="/scripts/load.js" defer="defer" type="text/javascript"></script>
     <script src="/scripts/questions.js" defer="defer" type="text/javascript"></script>
     <script src="/scripts/pers_test.js" defer="defer" type="text/javascript"></script>
   </head>
   <!-- Personality Test -->
-  <body>
+  <body class="hidden">
     <header>
       <!-- Navbar -->
       <nav class="navbar navbar-expand-md navbar-light">
@@ -60,40 +61,42 @@
     </header>
 
     <!-- Test Container -->
-    <div class="container test_container">
-      <div class="initial_goals">
-        <h2>To start, note down 3 goals you want to achieve by using Merudite</h2>
-        <h4>Try to be as specific as you can e.g. I will reflect on my emotions once a week.</h4>
-        <form class="">
-          <div class="form-group">
-            <textarea class="form-control content_thoughts"></textarea>
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-warning make_initial">Save and Continue</button>
-          </div>
-        </form>
-      </div>
-      <div class="test_begin">
-        <div class="test_explanation">
-          <h2>Take our personality test!</h2>
-          <h3>When you're ready to begin click the button below.</h3>
+    <div class="page_content">
+      <div class="container text-center">
+        <div class="initial_goals">
+          <h2>To start, note down 3 goals you want to achieve by using Merudite</h2>
+          <h4>Try to be as specific as you can e.g. I will reflect on my emotions once a week.</h4>
+          <form class="">
+            <div class="form-group">
+              <textarea class="form-control content_thoughts"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-warning make_initial">Save and Continue</button>
+            </div>
+          </form>
         </div>
-        <button type="button" class="test_btn btn btn-lg btn-warning begin_test">Begin Test</button>
-      </div>
-      <div class="test_interface">
-        <h1 class="question">I am the life of the party</h1>
-        <button type="button" class="test_btn btn btn-danger dis_str">Disagree Strongly</button>
-        <button type="button" class="test_btn btn btn-warning dis_sli">Disagree Slightly</button>
-        <button type="button" class="test_btn btn btn-secondary n_a_d">Neither Agree or Disagree</button>
-        <button type="button" class="test_btn btn btn-info agr_sli">Agree Slightly</button>
-        <button type="button" class="test_btn btn btn-success agr_str">Agree Strongly</button>
-      </div>
-      <div class="test_done">
-        <div class="test_explanation">
-          <h2>All done!</h2>
-          <h3>Have a look at your personality</h3>
+        <div class="test_begin hidden">
+          <div class="test_explanation">
+            <h2>Take our personality test!</h2>
+            <h3>When you're ready to begin click the button below.</h3>
+          </div>
+          <button type="button" class="test_btn btn btn-lg btn-warning begin_test">Begin Test</button>
         </div>
-        <button type="button" class="test_btn btn btn-lg btn-warning view_results">View Results</button>
+        <div class="test_interface hidden">
+          <h1 class="question">I am the life of the party</h1>
+          <button type="button" class="test_btn btn btn-danger dis_str">Disagree Strongly</button>
+          <button type="button" class="test_btn btn btn-warning dis_sli">Disagree Slightly</button>
+          <button type="button" class="test_btn btn btn-secondary n_a_d">Neither Agree or Disagree</button>
+          <button type="button" class="test_btn btn btn-info agr_sli">Agree Slightly</button>
+          <button type="button" class="test_btn btn btn-success agr_str">Agree Strongly</button>
+        </div>
+        <div class="test_done hidden">
+          <div class="test_explanation">
+            <h2>All done!</h2>
+            <h3>Have a look at your personality</h3>
+          </div>
+          <a href="/results.html"><button type="button" class="test_btn btn btn-lg btn-warning view_results">View Results</button></a>
+        </div>
       </div>
     </div>
 
