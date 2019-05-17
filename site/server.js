@@ -3,7 +3,7 @@
 var express = require("express");
 var app = express();
 //Helmet provides some security stuff
-// var helmet = require('helmet');
+var helmet = require('helmet');
 var fs = require("fs");
 // const sqlite3 = require('sqlite3').verbose();
 
@@ -36,10 +36,10 @@ var fs = require("fs");
 var banned = [];
 banUpperCase("./public/", "");
 
-// // Define the sequence of functions to be called for each request
-// app.use(helmet());
-// // app.use(handle);
-// // app.use(ban);
+// Define the sequence of functions to be called for each request
+app.use(helmet());
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 
 app.listen(8080, "localhost");
 console.log("Visit http://localhost:8080/");
