@@ -1,106 +1,59 @@
 "use strict";
 
-// Sample express web server.  Supports the same features as the provided server,
-// and demonstrates a big potential security loophole in express.
-
 var express = require("express");
 var app = express();
 //Helmet provides some security stuff
-var helmet = require('helmet');
+// var helmet = require('helmet');
 var fs = require("fs");
-const sqlite3 = require('sqlite3').verbose();
+// const sqlite3 = require('sqlite3').verbose();
 
-// open the database
-let db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE, (err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the database.');
-});
-
-db.serialize(() => {
-  db.each(`SELECT id as id,
-                  username as username
-           FROM users`, (err, row) => {
-    if (err) {
-      console.error(err.message);
-    }
-    console.log(row.id + "\t" + row.username);
-  });
-});
-
-db.close((err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Close the database connection.');
-});
+// // open the database
+// let db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE, (err) => {
+//   if (err) {
+//     console.error(err.message);
+//   }
+//   console.log('Connected to the database.');
+// });
+//
+// db.serialize(() => {
+//   db.each(`SELECT id as id,
+//                   username as username
+//            FROM users`, (err, row) => {
+//     if (err) {
+//       console.error(err.message);
+//     }
+//     console.log(row.id + "\t" + row.username);
+//   });
+// });
+//
+// db.close((err) => {
+//   if (err) {
+//     console.error(err.message);
+//   }
+//   console.log('Close the database connection.');
+// });
 
 var banned = [];
 banUpperCase("./public/", "");
 
-// Define the sequence of functions to be called for each request.  Make URLs
-// lower case, ban upper case filenames, require authorisation for admin.html,
-// and deliver static files from ./public.
-app.use(helmet());
-app.use(handle);
-app.use(ban);
-app.use(block_doubleslash);
-app.use("/admin.html", auth);
-var options = { setHeaders: deliverXHTML };
-app.use(express.static("public", options));
+// // Define the sequence of functions to be called for each request
+// app.use(helmet());
+// // app.use(handle);
+// // app.use(ban);
+
 app.listen(8080, "localhost");
 console.log("Visit http://localhost:8080/");
 
-//Handle url requests
-function handle (req, res, next) {
-  // Make the URL lower case.
-  var url = req.url.toLowerCase();
-  //console.log("url=", req.url);
-  // if (url.startsWith("/content.html")) get_content(url, res);
-  // //Request from client side AJAX
-  // else if (url == "/data") get_list(res);
-  //else getFile(url, res);
-  next();
-}
+app.get('/', function (req, res) {
+  console.log("request");
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('index.ejs');
+})
 
-//CLIENT BASED
-//Get a list of data from a client AJAX request
-function get_list(res) {
-  var ps = db.prepare("SELECT * from users");
-  ps.all(ready);
-  console.log("users list")
-  console.log(ps);
-  function ready(err, list) {
-    deliver_list(list, res);
-  }
-}
-function deliver_list(list, res) {
-  var text = JSON.stringify(list);
-  deliver(res, "text/plain", null, text);
-}
-
-//SERVER BASED
-//Get piece of content from database from server URL request
-function get_content(url, res) {
-  fs.readFile("./content.html", ready);
-  function ready(err, content) {
-    get_data(content, url, res);
-  }
-}
-function get_data(text, url, res) {
-  var parts = url.split("=");
-  var id = parts[1];
-  var ps = db.prepare("select * from pets where id=?");
-  ps.get(id, ready);
-  function ready(err, obj) { prepare(text, obj, res); }
-}
-//Send filled in document to be rendered
-function prepare(text, data, res) {
-  var parts = text.split("$");
-  var page = parts[0] + data.name + parts[1] + data.image + parts[2];
-  deliver(res, htmltype, null, page);
-}
+app.get('*//*', function (req, res) {
+  console.log("double backslash request");
+  res.status(404).send("Double slash blocked");
+})
 
 // Forbid access to the URLs in the banned list.
 function ban(req, res, next) {
@@ -114,35 +67,7 @@ function ban(req, res, next) {
     next();
 }
 
-//Block users being able to skirt server rules using double slash
-function block_doubleslash(req, res, next) {
-  if (req.url.indexOf("//") > 0) {
-    console.log("double backslash found");
-    res.status(404).send("Double slash blocked");
-    return;
-  }
-  next();
-}
-
-// Redirect the browser to the login page.
-function auth(req, res, next) {
-    res.redirect("/login.html");
-}
-
-// Called by express.static.  Deliver response as XHTML.
-function deliverXHTML(res, path, stat) {
-    if (path.endsWith(".html")) {
-        res.header("Content-Type", "application/xhtml+xml");
-    }
-}
-
-// Check a folder for files/subfolders with non-lowercase names.  Add them to
-// the banned list so they don't get delivered, making the site case sensitive,
-// so that it can be moved from Windows to Linux, for example. Synchronous I/O
-// is used because this function is only called during startup.  This avoids
-// expensive file system operations during normal execution.  A file with a
-// non-lowercase name added while the server is running will get delivered, but
-// it will be detected and banned when the server is next restarted.
+// Ban files/subfolders with non-lowercase names.
 function banUpperCase(root, folder) {
     var folderBit = 1 << 14;
     var names = fs.readdirSync(root + folder);
