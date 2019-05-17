@@ -47,9 +47,16 @@ console.log("Visit http://localhost:8080/");
 app.get('/', function (req, res) {
   console.log("request");
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('index.ejs');
+  res.render('index');
 })
 
+app.get('/product', function (req, res) {
+  console.log("request");
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('product');
+})
+
+//Ban doubleslash
 app.get('*//*', function (req, res) {
   console.log("double backslash request");
   res.status(404).send("Double slash blocked");
