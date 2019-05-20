@@ -8,8 +8,10 @@ var fs = require("fs");
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local');
 var bodyParser = require('body-parser');
+var Sequelize = require('sequelize'),
+  passportLocalSequelize = require('passport-local-sequelize');
 
 let db_username = "test";
 
@@ -51,6 +53,34 @@ app.use(require("express-session")({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
 app.use(passport.session());
+function hashPassword(password, salt) {
+  var hash = crypto.createHash('sha256');
+  hash.update(password);
+  hash.update(salt);
+  return hash.digest('hex');
+}
+passport.use(new LocalStrategy(function(username, password, done) {
+  console.log(username);
+  console.log(password);
+  return done(null, 'abcde');
+  db.get('SELECT salt FROM userCredentials WHERE username = ?', username, function(err, row) {
+    if (!row) return done(null, false);
+    var hash = hashPassword(password, row.salt);
+    db.get('SELECT username, id FROM users WHERE username = ? AND password = ?', username, hash, function(err, row) {
+      if (!row) return done(null, false);
+      return done(null, row);
+    });
+  });
+}));
+passport.serializeUser(function(user, done) {
+  return done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+  db.get('SELECT id, username FROM userCredentials WHERE id = ?', id, function(err, row) {
+    if (!row) return done(null, false);
+    return done(null, row);
+  });
+});
 
 
 
@@ -88,26 +118,39 @@ app.get('/register', function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('register');
 })
+
 app.get('/register', function (req, res) {
   console.log("Req: " + req.url);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('register');
 })
+
 app.post('/register', function(req, res) {
-  req.body.username
-  req.body.password
-  var sql = "INSERT INTO userCredentials (username, password) VALUES (" + req.body.username + ", " + req.body.password + ")";
-  con.query(sql, function (err, result) {
-    if (err) {
-      console.log(err);
-      return res.render('register');
-    }
-    console.log("No error with user creation");
-    passport.authenticate("local")(req, res, function() {
-      res.redirect('journey');
-    })
-  })
+  var usernameStr = req.body.username;
+  var passwordStr = req.body.password;
+  console.log(usernameStr + " " + passwordStr);
+  db.run('INSERT INTO userCredentials (username, password) VALUES (?, ?)', [usernameStr, passwordStr], function (err) {
+      if (err) {
+        console.log(err);
+        return res.render('register');
+      }
+      console.log("No error with user creation");
+      passport.authenticate("local")(req, res, function() {
+        res.redirect('journey');
+      });
+  });
+});
+
+app.post('/login', passport.authenticate("local"), function(req, res) {
+
 })
+
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/journey',
+  failureRedirect: '/login'
+}), function(req, res) {
+});
+
 
 //Functionality side
 
@@ -188,42 +231,6 @@ function banUpperCase(root, folder) {
     }
 }
 
-// function hashPassword(password, salt) {
-//   var hash = crypto.createHash('sha256');
-//   hash.update(password);
-//   hash.update(salt);
-//   return hash.digest('hex');
-// }
-//
-// passport.use(new LocalStrategy(function(username, password, done) {
-//   console.log(username);
-//   console.log(password);
-//   return done(null, 'abcde');
-//   // db.get('SELECT salt FROM userCredentials WHERE username = ?', username, function(err, row) {
-//   //   if (!row) return done(null, false);
-//   //   var hash = hashPassword(password, row.salt);
-//   //   db.get('SELECT username, id FROM users WHERE username = ? AND password = ?', username, hash, function(err, row) {
-//   //     if (!row) return done(null, false);
-//   //     return done(null, row);
-//   //   });
-//   // });
-// }));
-
-passport.serializeUser(function(user, done) {
-  return done(null, user.id);
-});
-
-
-passport.deserializeUser(function(id, done) {
-  db.get('SELECT id, username FROM userCredentials WHERE id = ?', id, function(err, row) {
-    if (!row) return done(null, false);
-    return done(null, row);
-  });
-});
-
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/journey',
-  failureRedirect: '/login' }));
 
 // db.close((err) => {
 //   if (err) {
