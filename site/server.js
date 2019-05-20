@@ -5,30 +5,30 @@ var app = express();
 //Helmet provides some security stuff
 var helmet = require('helmet');
 var fs = require("fs");
-const sqlite3 = require('sqlite3').verbose();
+// const sqlite3 = require('sqlite3').verbose();
 
 let db_username = "test";
 
 // open the database
-let db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE, (err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the database.');
-});
-
-db.serialize(() => {
-  db.each(`SELECT id as id,
-                  username as username
-           FROM users`, (err, row) => {
-    if (err) {
-      console.error(err.message);
-    }
-    db_username = row.username;
-    console.log(row.id + "\t" + row.username);
-  });
-});
-// 
+// let db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE, (err) => {
+//   if (err) {
+//     console.error(err.message);
+//   }
+//   console.log('Connected to the database.');
+// });
+//
+// db.serialize(() => {
+//   db.each(`SELECT id as id,
+//                   username as username
+//            FROM userCredentials`, (err, row) => {
+//     if (err) {
+//       console.error(err.message);
+//     }
+//     db_username = row.username;
+//     console.log(row.id + "\t" + row.username);
+//   });
+// });
+//
 // db.close((err) => {
 //   if (err) {
 //     console.error(err.message);
