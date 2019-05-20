@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
   <head>
+
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <meta name="description" content="Build a meaningful future"></meta>
+    <meta name="description" content="Engage content intelligently. Become better."></meta>
     <title>Merudite</title>
 
     <!-- STYLESHEETS -->
@@ -17,14 +18,13 @@
 
     <!-- SCRIPTS -->
     <!-- JQuery and Bootstrap -->
-    <script defer="defer" type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script defer="defer" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script defer="defer" type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="/scripts/load.js" defer="defer" type="text/javascript"></script>
   </head>
-  <!-- Landing Page -->
+  <!-- About page -->
   <body class="hidden">
-    <!-- Header -->
     <header>
       <!-- Navbar -->
       <nav class="navbar navbar-expand-md navbar-light">
@@ -36,67 +36,41 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto row">
-            <li class="nav-item active align-self-center">
+            <li class="nav-item align-self-center">
               <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item align-self-center">
-              <a class="nav-link" href="/product">Product</a>
+              <a class="nav-link" href="/product.html">Product</a>
+            </li>
+            <li class="nav-item active align-self-center">
+              <a class="nav-link" href="/about.html">Team</a>
             </li>
             <li class="nav-item align-self-center">
-              <a class="nav-link" href="/about">Team</a>
+              <a class="nav-link" href="/login.html">Log In</a>
             </li>
             <li class="nav-item align-self-center">
-              <a class="nav-link" href="/login">Log In</a>
-            </li>
-            <li class="nav-item align-self-center">
-              <a class="nav-link" href="/register"><button type="button" class="btn btn-warning">Register</button></a>
+              <a class="nav-link" href="/register.html"><button type="button" class="btn btn-warning">Register</button></a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
 
+    <!-- content -->
     <div class="page_content">
-      <!-- Intro and picture -->
-      <div class="section1">
+      <div class="team_section1">
         <div class="container">
-          <div class="row">
-            <div class="section_text col text-center">
-              <h1 class="display-3">Creating Meaningful Futures</h1>
-              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
-              <p>Bringing well-being and life skills education to young people with personalised learning journeys.</p>
-              <a class="" href="/register.html"><button type="button" class="btn btn-lg btn-warning">Register Now</button></a>
-            </div>
-            <div class="pic1 col-md-5">
-              <object class="pic d-inline-block align-top" data="/assets/pic1.png" type="image/png">Happy People</object>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <object class="crossbar" data="/assets/crossbar2.svg" type="image/svg+xml">crossbar</object>
-
-      <!-- Video -->
-      <div class="section2">
-        <div class="container">
-          <div class="row">
-            <div class="section_text col text-center">
-              <h1 class="display-5">Self Awareness as a starting point</h1>
-              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
-              <p>By first understanding who we are as a person, we can find the best ways to live a meaningful life</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col text-center">
-              <iframe width="80%" height="450" src="https://www.youtube.com/embed/NpEaa2P7qZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
-            </div>
-          </div>
+          <h1 class="display-3">Our Team</h1>
+          <p class="team-text">
+            We are a digital tool that delivers curated learning plans based on personality types. Our curated content and interactive tools are focused on supporting young people to improve their self-awareness and well-being.
+          </p>
+          <a href="/register.html"><button type="button" class="btn btn-lg btn-warning"><strong>Sign Up Now</strong></button></a>
         </div>
       </div>
 
       <object class="crossbar" data="/assets/crossbar0.svg" type="image/svg+xml">crossbar</object>
 
-      <div class="section3">
+      <div class="product_section2">
         <div class="container">
           <div class="row">
             <div class="pic1 col-md-5">
@@ -111,31 +85,16 @@
         </div>
       </div>
 
-      <div class="section4">
+      <div class="product_section3">
         <div class="container">
           <div class="row">
             <div class="section_text col text-center">
-              <h1 class="display-5">Supporting Forward Movement</h1>
+              <h1 class="display-5">Creating Meaningful Futures</h1>
               <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
-              <p>We empower young people to move forward with their lives in a meaningful way.</p>
+              <p>Bringing well-being and life skills education to young people with personalised learning journeys.</p>
             </div>
             <div class="pic1 col-md-5">
-              <object class="pic d-inline-block align-top" data="/assets/movingforward.png" type="image/png">Happy People</object>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section5">
-        <div class="container">
-          <div class="row">
-            <div class="pic1 col-md-5">
-              <object class="pic d-inline-block align-top" data="/assets/mountains.png" type="image/png">Two Billion</object>
-            </div>
-            <div class="section_text col text-center">
-              <h1 class="display-5">Begin Your Journey</h1>
-              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
-              <p>With our personalised learning plans you'll be well on the way to a more meaningful life.</p>
+              <object class="pic d-inline-block align-top" data="/assets/pic1.png" type="image/png">Happy People</object>
             </div>
           </div>
         </div>
@@ -172,6 +131,7 @@
     <!-- Footer -->
     <footer>
       <div class="footer">
+
         <object class="footer_bg" data="/assets/footer.svg" type="image/svg+xml">Footer Design</object>
         <div class="footer_content container">
           <div class="row">
@@ -209,4 +169,4 @@
     </footer>
 
   </body>
-</html>
+  </html>

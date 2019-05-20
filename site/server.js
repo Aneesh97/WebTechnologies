@@ -56,6 +56,27 @@ app.get('/product', function (req, res) {
   res.render('product');
 })
 
+app.get('/about', function (req, res) {
+  console.log("request");
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('about');
+})
+
+app.get('/login', function (req, res) {
+  console.log("request");
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('login');
+})
+
+app.get('/register', function (req, res) {
+  console.log("request");
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('register');
+})
+
+//Aneesh TODO: Format the other pages in EJS template
+//             Keep looking into username/password authentication
+
 //Ban doubleslash
 app.get('*//*', function (req, res) {
   console.log("double backslash request");
