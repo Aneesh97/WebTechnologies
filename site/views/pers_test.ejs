@@ -1,0 +1,50 @@
+<% include partials/header %>
+
+<!-- Extra Stylesheets -->
+<link rel="stylesheet" href="/styles/pers_test.css" type="text/css"></link>
+<!-- Extra Scripts -->
+<script src="/scripts/questions.js" defer="defer" type="text/javascript"></script>
+<script src="/scripts/pers_test.js" defer="defer" type="text/javascript"></script>
+
+<% include partials/navbar_fn %>
+
+<div class="page_content">
+  <div class="container text-center">
+    <div class="initial_goals">
+      <h2>To start, note down 3 goals you want to achieve by using Merudite</h2>
+      <h4>Try to be as specific as you can e.g. I will reflect on my emotions once a week.</h4>
+      <form class="">
+        <div class="form-group">
+          <textarea class="form-control content_thoughts"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-warning make_initial">Save and Continue</button>
+        </div>
+      </form>
+    </div>
+    <div class="test_begin hidden">
+      <div class="test_explanation">
+        <h2>Take our personality test!</h2>
+        <h3>When you're ready to begin click the button below.</h3>
+      </div>
+      <button type="button" class="test_btn btn btn-lg btn-warning begin_test">Begin Test</button>
+    </div>
+    <div class="test_interface hidden">
+      <h1 class="question">I am the life of the party</h1>
+      <button type="button" class="test_btn btn btn-danger dis_str">Disagree Strongly</button>
+      <button type="button" class="test_btn btn btn-warning dis_sli">Disagree Slightly</button>
+      <button type="button" class="test_btn btn btn-secondary n_a_d">Neither Agree or Disagree</button>
+      <button type="button" class="test_btn btn btn-info agr_sli">Agree Slightly</button>
+      <button type="button" class="test_btn btn btn-success agr_str">Agree Strongly</button>
+    </div>
+    <div class="test_done hidden">
+      <div class="test_explanation">
+        <h2>All done!</h2>
+        <h3>Have a look at your personality</h3>
+      </div>
+      <a href="/results"><button type="button" class="test_btn btn btn-lg btn-warning view_results">View Results</button></a>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

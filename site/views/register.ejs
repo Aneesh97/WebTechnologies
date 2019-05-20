@@ -1,140 +1,49 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-  lang="en-GB" xml:lang="en-GB">
-  <head>
-    <meta charset="utf-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <title>Merudite</title>
+<% include partials/header %>
 
-    <!-- STYLESHEETS -->
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>
-    <link rel="stylesheet" href="/styles/general_style.css" type="text/css"></link>
-    <link rel="stylesheet" href="/styles/interface.css" type="text/css"></link>
-    <link rel="stylesheet" href="/styles/pass_checks.css" type="text/css"></link>
+<!-- Extra Stylesheets -->
+<link rel="stylesheet" href="/styles/pass_checks.css" type="text/css"></link>
+<!-- Extra Scripts -->
+<script src="/scripts/checks.js" defer="defer" type="text/javascript"></script>
+<script src="/scripts/reg.js" defer="defer" type="text/javascript"></script>
 
-    <!-- SCRIPTS -->
-    <!-- JQuery and Bootstrap -->
-    <script defer="defer" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="/scripts/load.js" defer="defer" type="text/javascript"></script>
-    <script src="/scripts/checks.js" defer="defer" type="text/javascript"></script>
-    <script src="/scripts/reg.js" defer="defer" type="text/javascript"></script>
+<% include partials/navbar_ld %>
 
-  </head>
-
-  <body class="hidden">
-    <header>
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-md navbar-light">
-        <a class="navbar-brand" href="/">
-          <object class="logo" data="/assets/logowithtext.svg" type="image/svg+xml">Merudite Logo</object>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto row">
-            <li class="nav-item align-self-center">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item align-self-center">
-              <a class="nav-link" href="/product.html">Product</a>
-            </li>
-            <li class="nav-item align-self-center">
-              <a class="nav-link" href="/about.html">Team</a>
-            </li>
-            <li class="nav-item align-self-center">
-              <a class="nav-link" href="/login.html">Log In</a>
-            </li>
-            <li class="nav-item active align-self-center">
-              <a class="nav-link" href="/register.html"><button type="button" class="btn btn-warning">Register</button></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <div class="page_content">
-      <div class="container">
-        <h1 class="card-title display-4">Start becoming more self-aware</h1>
-        <form>
-          <div class="form_group">
-            <input type="email" class="form-control" id="register_email" aria-describedby="emailHelp" placeholder="Email"></input>
-          </div>
-          <div class="form_group">
-            <input type="password" class="form-control" id="pass_to_check" aria-describedby="passHelp" placeholder="Password"></input>
-            <div class="pass_checks row text-center">
-              <div class="col">
-                <p class="small form-text text-muted 8long">8 characters long</p>
-              </div>
-              <div class="col">
-                <p class="small form-text text-muted 1Lower">one lowercase letter</p>
-              </div>
-              <div class="col">
-                <p class="small form-text text-muted 1Upper">one uppercase letter</p>
-              </div>
-              <div class="col">
-                <p class="small form-text text-muted 1Number">one number</p>
-              </div>
-            </div>
-          </div>
-          <div class="form_group">
-            <input type="password" class="form-control" id="repeat_password" placeholder="Confirm Password"></input>
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="signup_data_consent"></input>
-            <label class="form-check-label" for="signup_data_consent">I consent to receiving occasional emails</label>
-          </div>
-          <div class="form-group reg_button">
-            <a href="/journey.html"><button type="button" class="btn btn-lg btn-warning register">Register</button></a>
-          </div>
-        </form>
+<div class="page_content">
+  <div class="container">
+    <h1 class="card-title display-4">Start becoming more self-aware</h1>
+    <form>
+      <div class="form_group">
+        <input type="email" class="form-control" id="register_email" aria-describedby="emailHelp" placeholder="Email"></input>
       </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer">
-
-        <object class="footer_bg" data="/assets/footer.svg" type="image/svg+xml">Footer Design</object>
-        <div class="footer_content container">
-          <div class="row">
-            <div class="col-md-4">
-              <a class="footer_link" href="/"><p>Home</p></a>
-              <a class="footer_link" href="/product.html"><p>Product</p></a>
-              <a class="footer_link" href="/about.html"><p>Team</p></a>
-              <a class="footer_link" href="/contact/html"><p>Contact</p></a>
-              <a class="footer_link" href="/privacy.html"><p>Privacy Policy</p></a>
-              <a class="footer_link" href="/cookies.html"><p>Cookies</p></a>
-              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
-              <p><small>© Merudite 2018</small></p>
-            </div>
-            <div class="col">
-              <h1 class="display-5">Want to know more?</h1>
-              <object class="divider" data="/assets/divider.svg" type="image/svg+xml">text divider</object>
-              <p>Sign up to our mailing list to receive a free well-being video and updates on what we're doing.</p>
-              <form>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="mailing_name" placeholder="Name"></input>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" id="mailing_email" aria-describedby="emailHelp" placeholder="Email"></input>
-                </div>
-                <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="data_consent"></input>
-                  <label class="form-check-label" for="data_consent">I consent to receiving occasional emails</label>
-                </div>
-                <button type="submit" class="btn btn-warning">Submit</button>
-              </form>
-            </div>
+      <div class="form_group">
+        <input type="password" class="form-control" id="pass_to_check" aria-describedby="passHelp" placeholder="Password"></input>
+        <div class="pass_checks row text-center">
+          <div class="col">
+            <p class="small form-text text-muted 8long">8 characters long</p>
+          </div>
+          <div class="col">
+            <p class="small form-text text-muted 1Lower">one lowercase letter</p>
+          </div>
+          <div class="col">
+            <p class="small form-text text-muted 1Upper">one uppercase letter</p>
+          </div>
+          <div class="col">
+            <p class="small form-text text-muted 1Number">one number</p>
           </div>
         </div>
       </div>
-    </footer>
+      <div class="form_group">
+        <input type="password" class="form-control" id="repeat_password" placeholder="Confirm Password"></input>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="signup_data_consent"></input>
+        <label class="form-check-label" for="signup_data_consent">I consent to receiving occasional emails</label>
+      </div>
+      <div class="form-group reg_button">
+        <a href="/journey"><button type="button" class="btn btn-lg btn-warning register">Register</button></a>
+      </div>
+    </form>
+  </div>
+</div>
 
-  </body>
-</html>
+<% include partials/footer %>

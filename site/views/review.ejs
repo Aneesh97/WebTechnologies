@@ -1,0 +1,174 @@
+<% include partials/header %>
+
+<!-- Extra Stylesheets -->
+<link rel="stylesheet" href="/styles/review.css" type="text/css"></link>
+<!-- Extra Scripts -->
+<script src="/scripts/results.js" defer="defer" type="text/javascript"></script>
+
+<% include partials/navbar_fn %>
+
+<div class="page_content">
+  <!-- User Results -->
+  <div class="container review_container">
+
+    <div class="row">
+      <!-- Class Average Results -->
+      <div class="col card">
+        <h4>User Average Results</h4>
+
+        <div class="ope" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ope_collapse">
+          Openness to Experience<span class='o_perc'> - 42%</span>
+          <div class="progress result_bar">
+            <div class="progress-bar bg-danger openness" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="collapse" id="ope_collapse">
+            <div class="card card-body small">
+              <b>Positives:</b> People with a high score may be highly creative and interested in many new experiences and things.
+              <b>Negatives:</b> People with a high score may be unable to stay focused, get bored easily and experiment with dangerous things.
+            </div>
+          </div>
+        </div>
+
+        <div class="con" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="con_collapse">
+          Conscientiousness<span class='c_perc'> - 39%</span>
+          <div class="progress result_bar">
+            <div class="progress-bar bg-info conscientiousness" role="progressbar" style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="collapse" id="con_collapse">
+            <div class="card card-body small">
+              <b>Positives:</b> People with a high score may be hard working, organised and dedicated to a task.
+              <b>Negatives:</b> People with a high score may be obsessive, unable to function without a schedule and upset by disorder.
+            </div>
+          </div>
+        </div>
+
+        <div class="ext" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ext_collapse">
+          Extraversion<span class='e_perc'> - 54%</span>
+          <div class="progress result_bar">
+            <div class="progress-bar extraversion" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="collapse" id="ext_collapse">
+            <div class="card card-body small">
+              <b>Positives:</b> People with a high score may be outgoing, highly social, energetic, and talkative.
+              <b>Negatives:</b> People with a high score may be loud, bossy, exhausting, and off-putting to quieter people.
+            </div>
+          </div>
+        </div>
+
+        <div class="agr" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="agr_collapse">
+          Agreeableness<span class='a_perc'> - 35%</span>
+          <div class="progress result_bar">
+            <div class="progress-bar bg-success agreeableness" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="collapse" id="agr_collapse">
+            <div class="card card-body small">
+              <b>Positives:</b> People with a high score may be kind-hearted, helpful, warm, and trusting.
+              <b>Negatives:</b> People with a high score may be pushed around, easily deceived, and fail to stick up for themselves.
+            </div>
+          </div>
+        </div>
+
+        <div class="neu" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="neu_collapse">
+          Neuroticism<span class='n_perc'> - 67%</span>
+          <div class="progress result_bar">
+            <div class="progress-bar bg-warning neuroticism" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="collapse" id="neu_collapse">
+            <div class="card card-body small">
+              <b>Positives:</b> People with a high score may be quicker to get out of dangerous situations, and more likely to alert others to danger.
+              <b>Negatives:</b> People with a high score may be emotionally volatile, unstable and experience lots of negative emotion.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Results Summary -->
+      <div class="col card">
+        <h4>Results Summary</h4>
+        <p>User average highest score in: <strong>Neuroticism at 67%</strong></p>
+        <p>User average lowest score in: <strong>Agreeableness at 35%</strong></p>
+        <p>Next lesson we suggest focusing on Mindfulness and Meditation. Some recommended content and an example lesson plan can be found below.</p>
+        <button type="button" class="btn btn-warning">View Suggested Lesson Plan</button>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Lesson Progression -->
+      <div class="col card">
+        <h4>Progress</h4>
+        <div class="progress">
+          <div class="progress-bar bg-success journey_bar" role="progressbar" style="width: 16%" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="row text-center">
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary small">1</button>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary small">2</button>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary small">3</button>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary small">4</button>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary small">5</button>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary small">6</button>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson Feedback -->
+      <div class="col card">
+        <h4>Feedback</h4>
+        <div class="progress rating_bar">
+          <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><i class="fas fa-smile-beam"></i></div>
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><i class="fas fa-meh"></i></div>
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><i class="fas fa-frown-open"></i></div>
+        </div>
+        <p>50% of users rated this week positively!</p>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Support Required -->
+      <div class="col card">
+        <h4>Support Needed</h4>
+        <div class="row">
+          <div class="col-1">
+          </div>
+          <div class="col card support_card">
+            <h6>Jimmy</h6>
+            <p class="small">Didn't complete learning journey this week</p>
+            <button type="button" class="btn btn-sm btn-warning small">View</button>
+          </div>
+          <div class="col card support_card">
+            <h6>Sally</h6>
+            <p class="small">Reacted negatively to content this week</p>
+            <button type="button" class="btn btn-sm btn-warning small">View</button>
+          </div>
+          <div class="col card support_card">
+            <h6>David</h6>
+            <p class="small">Has not yet completed personality test</p>
+            <button type="button" class="btn btn-sm btn-warning small">View</button>
+          </div>
+          <div class="col card support_card">
+            <h6>Ethel</h6>
+            <p class="small">Didn't complete learning journey this week</p>
+            <button type="button" class="btn btn-sm btn-warning small">View</button>
+          </div>
+          <div class="col-1">
+          </div>
+        </div>
+      </div>
+      <!-- Safeguarding Management -->
+      <div class="col card">
+        <h4>Safeguarding</h4>
+        <p>There are <strong>2</strong> safeguarding alerts.</p>
+        <button type="button" class="btn btn-danger ">Resolve</button>
+      </div>
+    </div>
+    <a href="/results"><button type="button" class="btn btn-link">Switch to User View</button></a>
+  </div>
+</div>
+
+<% include partials/footer %>
