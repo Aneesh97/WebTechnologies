@@ -5,7 +5,10 @@ var app = express();
 //Helmet provides some security stuff
 var helmet = require('helmet');
 var fs = require("fs");
-// const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose();
+const bcrypt = require('bcrypt');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 let db_username = "test";
 
@@ -123,6 +126,7 @@ app.get('/review', function (req, res) {
   res.render('review');
 })
 
+
 //Aneesh TODO: Format the other pages in EJS template
 //             Keep looking into username/password authentication
 
@@ -133,6 +137,9 @@ app.get('*//*', function (req, res) {
   console.log("double backslash request");
   res.status(404).send("Double slash blocked");
 })
+
+// Login link with database
+
 
 // Forbid access to the URLs in the banned list.
 function ban(req, res, next) {
