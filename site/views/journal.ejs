@@ -11,49 +11,19 @@
   <!-- User Journal -->
   <div class="container journal_container">
 
-    <div class="row journal_entry">
-      <div class="col col-md-3">
-        <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-      </div>
-      <div class="col">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-      </div>
-    </div>
+    <% for(var i = 0; i < 5; i++) {%>
 
-    <div class="row journal_entry">
-      <div class="col col-md-3">
-        <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
+      <div class="row journal_entry">
+        <div class="col col-md-3">
+          <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
+        </div>
+        <div class="col">
+          <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
+        </div>
       </div>
-      <div class="col">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-      </div>
-    </div>
-
-    <div class="row journal_entry">
-      <div class="col col-md-3">
-        <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-      </div>
-      <div class="col">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-      </div>
-    </div>
-
-    <div class="row journal_entry">
-      <div class="col col-md-3">
-        <object class="journal_item_pic" data="/assets/placeholder.svg" type="image/svg+xml">Journal Item 1</object>
-      </div>
-      <div class="col">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <a href="/content.html"><button type="button" class="btn btn-warning">View</button></a>
-      </div>
-    </div>
+    <% } %>
 
   </div>
 </div>
