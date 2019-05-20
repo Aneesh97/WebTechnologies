@@ -1,0 +1,84 @@
+<% include partials/header %>
+
+<!-- Extra Stylesheets -->
+
+<!-- Extra Scripts -->
+<script src="/scripts/results.js" defer="defer" type="text/javascript"></script>
+
+<% include partials/navbar_fn %>
+
+<div class="page_content">
+  <!-- User Results -->
+  <div class="container results_container">
+    <h1>Results</h1>
+
+    <div class="ope" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ope_collapse">
+      <h3>Openness to Experience<span class='o_perc'> - 0%</span></h3>
+      <div class="progress result_bar">
+        <div class="progress-bar progress-bar-striped bg-danger openness" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="collapse" id="ope_collapse">
+        <div class="card card-body">
+          <b>Positives:</b> People with a high score may be highly creative and interested in many new experiences and things.
+          <b>Negatives:</b> People with a high score may be unable to stay focused, get bored easily and experiment with dangerous things.
+        </div>
+      </div>
+    </div>
+
+    <div class="con" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="con_collapse">
+      <h3>Conscientiousness<span class='c_perc'> - 0%</span></h3>
+      <div class="progress result_bar">
+        <div class="progress-bar progress-bar-striped bg-info conscientiousness" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="collapse" id="con_collapse">
+        <div class="card card-body">
+          <b>Positives:</b> People with a high score may be hard working, organised and dedicated to a task.
+          <b>Negatives:</b> People with a high score may be obsessive, unable to function without a schedule and upset by disorder.
+        </div>
+      </div>
+    </div>
+
+    <div class="ext" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ext_collapse">
+      <h3>Extraversion<span class='e_perc'> - 0%</span></h3>
+      <div class="progress result_bar">
+        <div class="progress-bar progress-bar-striped extraversion" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="collapse" id="ext_collapse">
+        <div class="card card-body">
+          <b>Positives:</b> People with a high score may be outgoing, highly social, energetic, and talkative.
+          <b>Negatives:</b> People with a high score may be loud, bossy, exhausting, and off-putting to quieter people.
+        </div>
+      </div>
+    </div>
+
+    <div class="agr" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="agr_collapse">
+      <h3>Agreeableness<span class='a_perc'> - 0%</span></h3>
+      <div class="progress result_bar">
+        <div class="progress-bar progress-bar-striped bg-success agreeableness" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="collapse" id="agr_collapse">
+        <div class="card card-body">
+          <b>Positives:</b> People with a high score may be kind-hearted, helpful, warm, and trusting.
+          <b>Negatives:</b> People with a high score may be pushed around, easily deceived, and fail to stick up for themselves.
+        </div>
+      </div>
+    </div>
+
+    <div class="neu" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="neu_collapse">
+      <h3>Neuroticism<span class='n_perc'> - 0%</span></h3>
+      <div class="progress result_bar">
+        <div class="progress-bar progress-bar-striped bg-warning neuroticism" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="collapse" id="neu_collapse">
+        <div class="card card-body">
+          <b>Positives:</b> People with a high score may be quicker to get out of dangerous situations, and more likely to alert others to danger.
+          <b>Negatives:</b> People with a high score may be emotionally volatile, unstable and experience lots of negative emotion.
+        </div>
+      </div>
+    </div>
+    <a href="/test"><button type="button" class="btn btn-warning">Redo Test</button></a>
+    <a href="/review"><button type="button" class="btn btn-link">Switch to Admin View</button></a>
+  </div>
+</div>
+
+<% include partials/footer %>
