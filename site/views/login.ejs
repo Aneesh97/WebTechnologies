@@ -11,14 +11,15 @@
 <div class="page_content">
   <div class="container">
     <h1 class="display-4">Resume Your Journey</h1>
-    <form>
+
+    <form method="POST" action="/login">
       <div class="form_group">
-        <input type="email" class="form-control" name="registerEmail" aria-describedby="emailHelp" placeholder="Email"></input>
+        <input type="text" name="username" class="form-control" placeholder="Username"></input>
       </div>
       <div class="form_group">
-        <input type="password" class="form-control" name="registerPassword" aria-describedby="passHelp" placeholder="Password"></input>
+        <input type="password" name="password" class="form-control" placeholder="Password"></input>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-2">
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="remember_me"></input>
@@ -28,11 +29,10 @@
         <div class="col">
           <a href="#">Forgot Password?</a>
         </div>
-      </div>
-      <div class="form-group regOrLogBtns">
-        <button type="button" class="btn btn-lg btn-warning login">Log In</button>
-      </div>
+      </div> -->
+        <button type="submit" class="btn btn-lg btn-warning login">Log In</button>
     </form>
+
   </div>
 </div>
 

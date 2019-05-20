@@ -9,17 +9,18 @@ const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var bodyParser = require('body-parser');
 
 let db_username = "test";
 
 // open the database
-// let db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE, (err) => {
-//   if (err) {
-//     console.error(err.message);
-//   }
-//   console.log('Connected to the database.');
-// });
-//
+let db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE, (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log('Connected to the database.');
+});
+
 // db.serialize(() => {
 //   db.each(`SELECT id as id,
 //                   username as username
@@ -31,13 +32,8 @@ let db_username = "test";
 //     console.log(row.id + "\t" + row.username);
 //   });
 // });
-//
-// db.close((err) => {
-//   if (err) {
-//     console.error(err.message);
-//   }
-//   console.log('Close the database connection.');
-// });
+
+
 
 var banned = [];
 banUpperCase("./public/", "");
@@ -47,6 +43,16 @@ app.use(helmet());
 app.use(ban);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.use(require("express-session")({
+  secret: "Merudite is the best website",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.listen(8080, "localhost");
 console.log("Visit http://localhost:8080/");
@@ -86,6 +92,21 @@ app.get('/register', function (req, res) {
   console.log("Req: " + req.url);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('register');
+})
+app.post('/register', function(req, res) {
+  req.body.username
+  req.body.password
+  var sql = "INSERT INTO userCredentials (username, password) VALUES (" + req.body.username + ", " + req.body.password + ")";
+  con.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+      return res.render('register');
+    }
+    console.log("No error with user creation");
+    passport.authenticate("local")(req, res, function() {
+      res.redirect('journey');
+    })
+  })
 })
 
 //Functionality side
@@ -166,3 +187,47 @@ function banUpperCase(root, folder) {
         banUpperCase(root, file);
     }
 }
+
+// function hashPassword(password, salt) {
+//   var hash = crypto.createHash('sha256');
+//   hash.update(password);
+//   hash.update(salt);
+//   return hash.digest('hex');
+// }
+//
+// passport.use(new LocalStrategy(function(username, password, done) {
+//   console.log(username);
+//   console.log(password);
+//   return done(null, 'abcde');
+//   // db.get('SELECT salt FROM userCredentials WHERE username = ?', username, function(err, row) {
+//   //   if (!row) return done(null, false);
+//   //   var hash = hashPassword(password, row.salt);
+//   //   db.get('SELECT username, id FROM users WHERE username = ? AND password = ?', username, hash, function(err, row) {
+//   //     if (!row) return done(null, false);
+//   //     return done(null, row);
+//   //   });
+//   // });
+// }));
+
+passport.serializeUser(function(user, done) {
+  return done(null, user.id);
+});
+
+
+passport.deserializeUser(function(id, done) {
+  db.get('SELECT id, username FROM userCredentials WHERE id = ?', id, function(err, row) {
+    if (!row) return done(null, false);
+    return done(null, row);
+  });
+});
+
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/journey',
+  failureRedirect: '/login' }));
+
+// db.close((err) => {
+//   if (err) {
+//     console.error(err.message);
+//   }
+//   console.log('Close the database connection.');
+// });
