@@ -12,10 +12,16 @@
   <div class="container">
     <h1 class="card-title display-4">Start becoming more self-aware</h1>
     <form action="/register" method="POST">
-      <input type="text" name="username" placeholder="username"></input>
-      <input type="password" name="password" placeholder="password"></input>
-      <button>SUBMIT</button>
+      <div class="form_group">
+        <input type="text" name="username" class="form-control" placeholder="username"></input>
+      </div>
+      <div class="form_group">
+        <input type="password" name="password" class="form-control" placeholder="password"></input>
+      </div>
+      <button type="submit" class="btn btn-lg btn-warning register">Register</button>
     </form>
+
+
     <!-- <form action="/register" method="POST">
       <div class="form_group">
         <input type="username" name="username" class="form-control" id="register_email" aria-describedby="emailHelp" placeholder="Email"></input>
@@ -48,6 +54,8 @@
         <button type="button" class="btn btn-lg btn-warning register">Register</button>
       </div>
     </form> -->
+
+
   </div>
 </div>
 

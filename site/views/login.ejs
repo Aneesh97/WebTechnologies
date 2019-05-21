@@ -13,9 +13,13 @@
     <h1 class="display-4">Resume Your Journey</h1>
 
     <form action="/login" method="POST">
-      <input type="text" name="username" placeholder="username"></input>
-      <input type="password" name="password" placeholder="password"></input>
-      <button>SUBMIT</button>
+      <div class="form_group">
+        <input type="text" name="username" class="form-control" placeholder="username"></input>
+      </div>
+      <div class="form_group">
+        <input type="password" name="password" class="form-control" placeholder="password"></input>
+      </div>
+      <button type="submit" class="btn btn-lg btn-warning login">Log In</button>
     </form>
 
     <!-- <form method="POST" action="/login">
