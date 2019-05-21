@@ -30,30 +30,26 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    // db.get('SELECT salt FROM userCredentials WHERE username = ?', username, function(err, row) {
-    //   if (!row) return done(null, false);
-    //   var hash = hashPassword(password, row.salt);
-      db.get('SELECT username, password FROM userCredentials WHERE username = ? AND password = ?', username, password, function(err, row) {
+    //Get the salt attached to the username
+    db.get('SELECT salt FROM userCredentials WHERE username = ?', username, function(err, row) {
+      if (!row) return done(null, false);
+      //Hash the password with the salt
+      var passwordData = sha512(password, row.salt);
+      var hash = passwordData.passwordHash;
+      db.get('SELECT username, id FROM userCredentials WHERE username = ? AND hash = ?', username, hash, function(err, row) {
         if (!row) return done(null, false);
-        console.log(row.password);
         return done(null, row);
     });
-  // });
+  });
 }));
-
-// function hashPassword(password, salt) {
-//   var hash = crypto.createHash('sha256');
-//   hash.update(password);
-//   hash.update(salt);
-//   return hash.digest('hex');
-// }
 passport.serializeUser(function(user, done) {
-  return done(null, user.password);
+  return done(null, user.id);
 });
-passport.deserializeUser(function(password, done) {
-  db.get('SELECT password, username FROM userCredentials WHERE password = ?', password, function(err, row) {
+passport.deserializeUser(function(id, done) {
+  db.get('SELECT id, username FROM userCredentials WHERE id = ?', id, function(err, row) {
     if (!row) return done(null, false);
     return done(null, row);
   });
@@ -157,15 +153,17 @@ app.get('*//*', function (req, res) {
 
 //Account session fucntionality
 app.post('/register', function(req, res) {
-  var usernameStr = req.body.username;
-  var passwordStr = req.body.password;
-  console.log(usernameStr + " " + passwordStr);
-  db.run('INSERT INTO userCredentials (username, password) VALUES (?, ?)', [usernameStr, passwordStr], function (err) {
+  var uStr = req.body.username;
+  var pStr = req.body.password;
+  var salt = gen_random_string(16);
+  var passwordData = sha512(pStr, salt);
+  var hash = passwordData.passwordHash;
+  db.run('INSERT INTO userCredentials (username, hash, salt) VALUES (?, ?, ?)', [uStr, hash, salt], function (err) {
       if (err) {
         console.log(err);
         return res.render('register');
       }
-      console.log("No error with user creation");
+      console.log("Account created successfully!");
       passport.authenticate("local")(req, res, function() {
         res.redirect('journey');
       });
@@ -181,6 +179,25 @@ app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
+
+//----------------------------------------------------------------------------//
+// FUNCTIONS
+//----------------------------------------------------------------------------//
+
+//Generate random character string ie salt
+function gen_random_string (length) {
+    return crypto.randomBytes(Math.ceil(length/2)).toString('hex').slice(0,length);
+}
+//Hash password with SHA512
+function sha512 (password, salt) {
+    var hash = crypto.createHmac('sha512', salt);
+    hash.update(password);
+    var value = hash.digest('hex');
+    return {
+        salt:salt,
+        passwordHash:value
+    }
+}
 
 //Check to see if the user is authenticated
 function is_logged_in(req, res, next) {

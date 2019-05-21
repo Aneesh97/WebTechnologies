@@ -1,0 +1,33 @@
+{
+  "name": "Merudite",
+  "version": "1.0.0",
+  "description": "Roman Bromidge: rb16730 Aneesh Anand: aa16169",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "helmet": "^3.16.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sqlite": "^3.0.3",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aneesh97/WebTechnologies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aneesh97/WebTechnologies/issues"
+  },
+  "homepage": "https://github.com/Aneesh97/WebTechnologies#readme"
+}
