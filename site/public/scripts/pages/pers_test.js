@@ -1,5 +1,6 @@
 //Functionality for the personality test page
 "use strict";
+
 console.log("personality script starting");
 //Global variables for text functionality
 let q_index = 0;
@@ -8,6 +9,7 @@ let r = new Array();
 //Function called on loading of page
 addEventListener('load', start);
 function start() {
+  $('.nav_results_link').addClass("active");
   $(".make_initial").click(submit_goals);
   $(".begin_test").click(begin_test);
   $(".dis_str").click(1, add_result);

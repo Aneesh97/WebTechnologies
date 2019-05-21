@@ -73,7 +73,7 @@ console.log("Visit http://localhost:8080/");
 app.get('/', function (req, res) {
   console.log("Req: " + req.url);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('index', {db_output: db_username});
+  res.render('index');
 });
 app.get('/product', function (req, res) {
   console.log("Req: " + req.url);

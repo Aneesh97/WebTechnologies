@@ -2,19 +2,6 @@
 Roman Bromidge: rb16730
 Aneesh Anand: aa16169
 
-TODO Front End
-Roman:
-- index (landing page)
-- pers_test
-- review
-- content
-Aneesh:
-- journal
-- account
-- register
-- about
-- results
-
 #MARKS
 - HTML: XHTML delivery, or a validator, to make sure your pages are correct, investigated a variety of different issues and gained a general high level of confidence with the structure of HTML pages (or with generating HTML via a framework)
 - CSS: no style tags or style attributes in your HTML pages, and you've gained some experience with stylesheets, investigated a variety of different issues and gained a general high level of confidence with CSS style (or with generating CSS via a framework)

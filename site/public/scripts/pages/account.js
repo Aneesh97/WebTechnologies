@@ -6,6 +6,8 @@ function start() {
   $("#pass_to_check").keyup(check_pass_strength);
   $(".delete_init").click(show_delete_flow)
   $(".submit_acc_changes").click(submit_acc_changes)
+  $('.nav_account_link').addClass("active");
+
 }
 
 //Begins deletion flow

@@ -3,6 +3,7 @@
 
 addEventListener('load', start);
 function start() {
+  $('.nav_results_link').addClass("active");
   $(".ext").hover(toggle_ext);
   $(".agr").hover(toggle_agr);
   $(".con").hover(toggle_con);
