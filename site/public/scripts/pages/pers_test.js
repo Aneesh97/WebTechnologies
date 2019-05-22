@@ -29,6 +29,11 @@ function save_results(e_val, a_val, c_val, n_val, o_val) {
     o_val: o_val
   };
   //Get working with DB
+  const url = "/test";
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(user_results));
 }
 
 //Calulate the final results of the test
@@ -39,6 +44,12 @@ function calculate_results() {
   let c_val = 14 + r[2] - r[7] + r[12] - r[17] + r[22] - r[27] + r[32] - r[37] + r[42] + r[47];
   let n_val = 38 - r[3] + r[8] - r[13] + r[18] - r[23] - r[28] - r[33] - r[38] - r[43] - r[48];
   let o_val = 8  + r[4] - r[9] + r[14] - r[19] + r[24] - r[29] + r[34] + r[39] + r[44] + r[49];
+
+  o_val = Math.round((o_val/40)*100);
+  c_val = Math.round((c_val/40)*100);
+  e_val = Math.round((e_val/40)*100);
+  a_val = Math.round((a_val/40)*100);
+  n_val = Math.round((n_val/40)*100);
 
   console.log(e_val + " " + a_val + " " + c_val + " " + n_val + " " + o_val);
 

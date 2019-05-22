@@ -11,6 +11,7 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var owasp = require('owasp-password-strength-test');
 var validator = require("validator");
+var uniqid = require('uniqid');
 var LocalStrategy = require('passport-local');
 
 let db_username = "test";
@@ -19,6 +20,7 @@ banUpperCase("./public/", "");
 // Define the sequence of functions to be called for each request
 app.use(helmet());
 app.use(ban);
+app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -122,6 +124,7 @@ app.get('/journal', is_logged_in, function (req, res) {
 });
 app.get('/journey', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
+  console.log("User ID is " + req.user.id);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('journey');
 });
@@ -132,8 +135,17 @@ app.get('/test', is_logged_in, function (req, res) {
 });
 app.get('/results', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
-  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('results');
+  var uid = req.user.id;
+  db.get('SELECT Oscore, Cscore, Escore, Ascore, Nscore FROM userScores WHERE id = ?', uid, function(err, row) {
+    res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+    res.render('results', {
+      o_val: row.Oscore,
+      c_val: row.Cscore,
+      e_val: row.Escore,
+      a_val: row.Ascore,
+      n_val: row.Nscore
+    });
+  });
 });
 app.get('/review', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
@@ -151,40 +163,44 @@ app.get('*//*', function (req, res) {
   res.status(404).send("Double slash blocked");
 });
 
-//Account session fucntionality
+//Account session functionality
 app.post('/register', function(req, res) {
   var uStr = req.body.username;
   var email = req.body.email;
   var pStr = req.body.password;
   var cStr = req.body.conf_password;
+  var result = owasp.test(pStr);
   console.log(uStr+' '+email+' '+pStr+' '+cStr);
-  //Check email is valid
-  if (validator.isEmail(email)) {
-    //Check passwords are the same
-    if (pStr === cStr) {
-      //Check password is valid
-      var result = owasp.test(pStr);
-      if (result.strong) {
-        //Check username contains only numbers and letters
-        if (validator.isAlphanumeric(uStr)) {
-          console.log("Passed all checks, registering...")
-          var salt = gen_random_string(16);
-          var passwordData = sha512(pStr, salt);
-          var hash = passwordData.passwordHash;
-          db.run('INSERT INTO userCredentials (username, email, hash, salt) VALUES (?, ?, ?, ?)', [uStr, email, hash, salt], function (err) {
-              if (err) {
-                console.log(err);
-                return res.render('register');
-              }
-              console.log("Account created successfully!");
-              passport.authenticate("local")(req, res, function() {
-                console.log("Authenticated, redirecting...")
-                res.redirect('/journey');
-              });
-          });
-        }
+  //Check email is valid & passwords are the same & password is valid & username contains only numbers and letters
+  if (validator.isEmail(email) && pStr === cStr && result.strong && validator.isAlphanumeric(uStr)) {
+    console.log("Passed all checks, registering...")
+    var uid = uniqid();
+    var salt = gen_random_string(16);
+    var passwordData = sha512(pStr, salt);
+    var hash = passwordData.passwordHash;
+    db.run('INSERT INTO userCredentials (id, username, email, hash, salt) VALUES (?, ?, ?, ?, ?)',
+    [uid, uStr, email, hash, salt],
+    function (err) {
+      if (err) {
+        console.log(err);
+        return res.render('register');
       }
-    }
+      db.run('INSERT INTO userScores (id, Oscore, Cscore, Escore, Ascore, Nscore, Wellbeing) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [uid, 0, 0, 0, 0, 0, 0], function(err) {
+        if (err) {
+          console.log(err);
+          return res.render('register');
+        }
+        console.log("Account created successfully!");
+        passport.authenticate("local")(req, res, function() {
+          console.log("Authenticated, redirecting...")
+          res.redirect('/journey');
+        });
+      });
+    });
+  }
+  else {
+    return res.render('register');
   }
 });
 app.post('/login', passport.authenticate('local', {
@@ -196,6 +212,25 @@ app.post('/login', passport.authenticate('local', {
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
+});
+
+//Save results
+app.post('/test', function(req, res) {
+  console.log("test request is called!");
+  let o_val = req.body.o_val;
+  let c_val = req.body.c_val;
+  let e_val = req.body.e_val;
+  let a_val = req.body.a_val;
+  let n_val = req.body.n_val;
+  var input_data = [o_val, c_val, e_val, a_val, n_val, 0, req.user.id];
+  //Insert them into the DB
+  db.run('UPDATE userScores SET Oscore=?, Cscore=?, Escore=?, Ascore=?, Nscore=?, Wellbeing=? WHERE id=?',
+  input_data, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Successfully saved data");
+  });
 });
 
 //----------------------------------------------------------------------------//

@@ -13,9 +13,9 @@
     <h1>Results</h1>
 
     <div class="ope" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ope_collapse">
-      <h3>Openness to Experience<span class='o_perc'> - 0%</span></h3>
+      <h3>Openness to Experience<span class='o_perc'> - <%= o_val %>%</span></h3>
       <div class="progress result_bar">
-        <div class="progress-bar progress-bar-striped bg-danger openness" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-striped bg-danger openness" role="progressbar" style="width: <%= o_val %>%" aria-valuenow="<%= o_val %>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <div class="collapse" id="ope_collapse">
         <div class="card card-body">
@@ -26,9 +26,9 @@
     </div>
 
     <div class="con" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="con_collapse">
-      <h3>Conscientiousness<span class='c_perc'> - 0%</span></h3>
+      <h3>Conscientiousness<span class='c_perc'> - <%= c_val %>%</span></h3>
       <div class="progress result_bar">
-        <div class="progress-bar progress-bar-striped bg-info conscientiousness" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-striped bg-info conscientiousness" role="progressbar" style="width: <%= c_val %>%" aria-valuenow="<%= c_val %>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <div class="collapse" id="con_collapse">
         <div class="card card-body">
@@ -39,9 +39,9 @@
     </div>
 
     <div class="ext" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="ext_collapse">
-      <h3>Extraversion<span class='e_perc'> - 0%</span></h3>
+      <h3>Extraversion<span class='e_perc'> - <%= e_val %>%</span></h3>
       <div class="progress result_bar">
-        <div class="progress-bar progress-bar-striped extraversion" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-striped extraversion" role="progressbar" style="width: <%= e_val %>%" aria-valuenow="<%= e_val %>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <div class="collapse" id="ext_collapse">
         <div class="card card-body">
@@ -52,9 +52,9 @@
     </div>
 
     <div class="agr" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="agr_collapse">
-      <h3>Agreeableness<span class='a_perc'> - 0%</span></h3>
+      <h3>Agreeableness<span class='a_perc'> - <%= a_val %>%</span></h3>
       <div class="progress result_bar">
-        <div class="progress-bar progress-bar-striped bg-success agreeableness" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-striped bg-success agreeableness" role="progressbar" style="width: <%= a_val %>%" aria-valuenow="<%= a_val %>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <div class="collapse" id="agr_collapse">
         <div class="card card-body">
@@ -65,9 +65,9 @@
     </div>
 
     <div class="neu" data-toggle="collapse" data-target="#ext_collapse" aria-expanded="false" aria-controls="neu_collapse">
-      <h3>Neuroticism<span class='n_perc'> - 0%</span></h3>
+      <h3>Neuroticism<span class='n_perc'> - <%= n_val %>%</span></h3>
       <div class="progress result_bar">
-        <div class="progress-bar progress-bar-striped bg-warning neuroticism" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-striped bg-warning neuroticism" role="progressbar" style="width: <%= n_val %>%" aria-valuenow="<%= n_val %>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       <div class="collapse" id="neu_collapse">
         <div class="card card-body">

@@ -8,7 +8,7 @@ async function create() {
         db = await sqlite.open("./data.db");
         await db.run("pragma foreign_keys = on");
 
-        await db.run("create table userCredentials (id integer primary key autoincrement, username, email, hash, salt)");
+        await db.run("create table userCredentials (id primary key, username, email, hash, salt)");
         // await db.run("insert into userCredentials values (42, 'aa16169', 'WebTech-2019')");
         // await db.run("insert into userCredentials values (53, 'rb16730', 'Merudite_1997')");
 
