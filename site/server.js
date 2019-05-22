@@ -115,7 +115,10 @@ app.get('/account', is_logged_in, function (req, res) {
 app.get('/content', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('content');
+  res.render('content', {
+    content_url: "https://www.youtube.com/embed/NpEaa2P7qZI",
+    prompt: "This is a test"
+  });
 });
 app.get('/journal', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
@@ -124,7 +127,6 @@ app.get('/journal', is_logged_in, function (req, res) {
 });
 app.get('/journey', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
-  console.log("User ID is " + req.user.id);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('journey');
 });
@@ -232,7 +234,27 @@ app.post('/test', function(req, res) {
     console.log("Successfully saved data");
   });
 });
-
+//Save journal entry
+app.post('/content', function(req, res) {
+  console.log("test request is called!");
+  let journalId = uniqid();
+  let uid = req.user.id;
+  let prompt = req.body.prompt;
+  let entry = req.body.thoughts;
+  let timestamp = Date.now();
+  let content = req.body.content_url;
+  db.run('INSERT INTO journal (journalid, id, prompt, entry, timestamp, content) VALUES (?, ?, ?, ?, ?, ?)',
+  [journalId, uid, prompt, entry, timestamp, content],
+  function (err) {
+    if (err) {
+      console.log(err);
+      return res.render('content');
+    }
+    console.log("Journal entry saved successfully!");
+    res.redirect('/journal');
+  });
+});
+//iu8lM?n589hB
 //----------------------------------------------------------------------------//
 // FUNCTIONS
 //----------------------------------------------------------------------------//
