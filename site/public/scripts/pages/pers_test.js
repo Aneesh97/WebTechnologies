@@ -31,7 +31,7 @@ function save_results(e_val, a_val, c_val, n_val, o_val) {
   //Get working with DB
   const url = "/test";
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
+  xhr.open("PUT", url, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(user_results));
 }

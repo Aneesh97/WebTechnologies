@@ -2,7 +2,6 @@
 
 var express = require("express");
 var app = express();
-
 var helmet = require('helmet');
 var fs = require("fs");
 const sqlite3 = require('sqlite3').verbose();
@@ -20,7 +19,7 @@ banUpperCase("./public/", "");
 // Define the sequence of functions to be called for each request
 app.use(helmet());
 app.use(ban);
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -216,24 +215,6 @@ app.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-//Save results
-app.post('/test', function(req, res) {
-  console.log("test request is called!");
-  let o_val = req.body.o_val;
-  let c_val = req.body.c_val;
-  let e_val = req.body.e_val;
-  let a_val = req.body.a_val;
-  let n_val = req.body.n_val;
-  var input_data = [o_val, c_val, e_val, a_val, n_val, 0, req.user.id];
-  //Insert them into the DB
-  db.run('UPDATE userScores SET Oscore=?, Cscore=?, Escore=?, Ascore=?, Nscore=?, Wellbeing=? WHERE id=?',
-  input_data, function(err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log("Successfully saved data");
-  });
-});
 //Save journal entry
 app.post('/content', function(req, res) {
   console.log("test request is called!");
@@ -254,7 +235,121 @@ app.post('/content', function(req, res) {
     res.redirect('/journal');
   });
 });
-//iu8lM?n589hB
+//Update test results
+app.put('/test', function(req, res) {
+  console.log("test request is called!");
+  let o_val = req.body.o_val;
+  let c_val = req.body.c_val;
+  let e_val = req.body.e_val;
+  let a_val = req.body.a_val;
+  let n_val = req.body.n_val;
+  var input_data = [o_val, c_val, e_val, a_val, n_val, 0, req.user.id];
+  //Insert them into the DB
+  db.run('UPDATE userScores SET Oscore=?, Cscore=?, Escore=?, Ascore=?, Nscore=?, Wellbeing=? WHERE id=?',
+  input_data, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Successfully saved data");
+  });
+});
+
+//Update account info
+app.put('/account', function(req, res) {
+  console.log("reached the put /account")
+  let uid = req.user.id;
+  let password = req.body.password;
+  let new_password = req.body.new_password;
+  let new_username = req.body.new_username;
+  let new_email = req.body.new_email;
+  console.log(uid+' '+password+' '+new_password+' '+new_username+' '+new_email);
+  // Get the salt attached to the uid
+  db.get('SELECT salt FROM userCredentials WHERE id = ?', uid, function(err, row) {
+    if (!row) return res.render('account');
+    //Hash the password with the salt
+    var passwordData = sha512(password, row.salt);
+    var hash = passwordData.passwordHash;
+    //AUTHENTICATE
+    db.get('SELECT username FROM userCredentials WHERE id = ? AND hash = ?', uid, hash, function(err, row) {
+      if (!row) return res.render('account');
+      //PASSWORD UPDATE
+      var result = owasp.test(new_password);
+      if (result.strong) {
+        var new_salt = gen_random_string(16);
+        var passwordData = sha512(new_password, new_salt);
+        var new_hash = passwordData.passwordHash;
+        db.run('UPDATE userCredentials SET hash=?, salt=? WHERE id=?',
+        [new_hash, new_salt, uid], function(err) {
+          if (err) {
+            console.log(err);
+          }
+          console.log("Successfully updated password!");
+        });
+      }
+      //USERNAME UPDATE
+      if (validator.isAlphanumeric(new_username)) {
+        db.run('UPDATE userCredentials SET username=? WHERE id=?',
+        [new_username, uid], function(err) {
+          if (err) {
+            console.log(err);
+          }
+          console.log("Successfully updated username!");
+        });
+      }
+      //EMAIL UPDATE
+      if (validator.isEmail(new_email)) {
+        db.run('UPDATE userCredentials SET email=? WHERE id=?',
+        [new_email, uid], function(err) {
+          if (err) {
+            console.log(err);
+          }
+          console.log("Successfully updated email!");
+        });
+      }
+    });
+  });
+  console.log("All done, refreshing...");
+  res.redirect('/journey');
+});
+
+//Delete account
+app.delete('/account', function(req, res) {
+  console.log("reached the delete /account")
+  let uid = req.user.id;
+  let password = req.body.password;
+  console.log(password);
+  db.get('SELECT salt FROM userCredentials WHERE id = ?', uid, function(err, row) {
+    if (!row) return res.render('account');
+    //Hash the password with the salt
+    var passwordData = sha512(password, row.salt);
+    var hash = passwordData.passwordHash;
+    //AUTHENTICATE
+    db.get('SELECT username FROM userCredentials WHERE id = ? AND hash = ?', uid, hash, function(err, row) {
+      db.run('DELETE FROM userCredentials WHERE id=?', [uid], function(err) {
+        if (err) {
+          console.log(err);
+        }
+        console.log("Successfully deleted credentials!");
+      });
+      db.run('DELETE FROM userScores WHERE id=?', [uid], function(err) {
+        if (err) {
+          console.log(err);
+        }
+        console.log("Successfully deleted scores!");
+      });
+      db.run('DELETE FROM journal WHERE id=?', [uid], function(err) {
+        if (err) {
+          console.log(err);
+        }
+        console.log("Successfully deleted journal!");
+      });
+    });
+  });
+  req.logout();
+  res.redirect('/');
+});
+
+
 //----------------------------------------------------------------------------//
 // FUNCTIONS
 //----------------------------------------------------------------------------//

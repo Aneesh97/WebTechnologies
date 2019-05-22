@@ -11,49 +11,50 @@
 <div class="page_content">
   <!-- User Information -->
   <div class="container">
-    <div class="alert alert-success email_success hidden" role="alert">
-      Email changed successfully! Please use the link in the email we've sent to verify your new email address! Can't find it?
-      <button type="button" class="btn btn-link resend_verify_email">Send Another</button>
+
+    <div class="form_group">
+      <input type="text" class="form-control new_username" placeholder="New Username"></input>
     </div>
-    <form>
-      <div class="form-group">
-        <label for="changeEmail">Change your email</label>
-        <input type="email" class="form-control" id="change_email" aria-describedby="emailHelp" placeholder="New email"/>
+    <div class="form_group">
+      <input type="email" class="form-control new_email" placeholder="New Email"></input>
+    </div>
+    <div class="form_group">
+      <input type="password" id="pass_to_check" class="form-control new_password" placeholder="New Password"></input>
+    </div>
+    <div class="pass_checks row text-center">
+      <div class="col">
+        <p class="small form-text text-muted 10long">10 characters long</p>
       </div>
-      <div class="form-group">
-        <label for="new_password">Change your password</label>
-        <input type="password" class="form-control" id="pass_to_check" aria-describedby="passHelp" placeholder="New Password"></input>
-        <div class="pass_checks row text-center">
-          <div class="col">
-            <p class="small form-text text-muted 8long">8 characters long</p>
-          </div>
-          <div class="col">
-            <p class="small form-text text-muted 1Lower">one lowercase letter</p>
-          </div>
-          <div class="col">
-            <p class="small form-text text-muted 1Upper">one uppercase letter</p>
-          </div>
-          <div class="col">
-            <p class="small form-text text-muted 1Number">one number</p>
-          </div>
-        </div>
+      <div class="col">
+        <p class="small form-text text-muted 1Lower">1 lowercase letter</p>
       </div>
-      <div class="form-group">
-        <label for="oldPassword">Please confirm your current password</label>
-        <input type="password" class="form-control" id="old_pass" placeholder="Old password"/>
+      <div class="col">
+        <p class="small form-text text-muted 1Upper">1 uppercase letter</p>
       </div>
-      <button type="button" class="btn btn-lg btn-warning submit_acc_changes">Submit</button>
-    </form>
+      <div class="col">
+        <p class="small form-text text-muted 1Number">1 number</p>
+      </div>
+      <div class="col">
+        <p class="small form-text text-muted 1Special">1 special character</p>
+      </div>
+    </div>
+    <div class="form_group">
+      <input type="password" class="form-control password" placeholder="Old Password"></input>
+    </div>
+    <button class="btn btn-lg btn-warning submit_acc_changes">Submit</button>
+
     <button type="button" class="btn btn-sm btn-link delete_init">Delete Account</button>
     <div class="jumbotron confirm_delete hidden">
       <h1 class="display-6">Are you sure?</h1>
       <p class="lead">If you delete your account, you'll lose access to our curated selection of useful content, and all your journal entries will be removed too!</p>
       <hr class="my-4"></hr>
       <p>We'll be sad to see you go, but if you really want to, please enter your password and click the button below to delete your account.</p>
+
       <div class="form-group">
-        <input type="password" class="form-control" id="del_pass" placeholder="Password"/>
+        <input type="password" class="form-control del_password" placeholder="Password"></input>
       </div>
       <button type="button" class="btn btn-danger btn-lg final_delete_button">Delete My Account</button>
+
     </div>
   </div>
 </div>
