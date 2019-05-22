@@ -9,6 +9,8 @@ const sqlite3 = require('sqlite3').verbose();
 var crypto = require('crypto');
 var passport = require('passport');
 var bodyParser = require('body-parser');
+var owasp = require('owasp-password-strength-test');
+var validator = require("validator");
 var LocalStrategy = require('passport-local');
 
 let db_username = "test";
@@ -27,10 +29,8 @@ app.use(require("express-session")({
   resave: false,
   saveUninitialized: false
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     //Get the salt attached to the username
@@ -154,20 +154,38 @@ app.get('*//*', function (req, res) {
 //Account session fucntionality
 app.post('/register', function(req, res) {
   var uStr = req.body.username;
+  var email = req.body.email;
   var pStr = req.body.password;
-  var salt = gen_random_string(16);
-  var passwordData = sha512(pStr, salt);
-  var hash = passwordData.passwordHash;
-  db.run('INSERT INTO userCredentials (username, hash, salt) VALUES (?, ?, ?)', [uStr, hash, salt], function (err) {
-      if (err) {
-        console.log(err);
-        return res.render('register');
+  var cStr = req.body.conf_password;
+  console.log(uStr+' '+email+' '+pStr+' '+cStr);
+  //Check email is valid
+  if (validator.isEmail(email)) {
+    //Check passwords are the same
+    if (pStr === cStr) {
+      //Check password is valid
+      var result = owasp.test(pStr);
+      if (result.strong) {
+        //Check username contains only numbers and letters
+        if (validator.isAlphanumeric(uStr)) {
+          console.log("Passed all checks, registering...")
+          var salt = gen_random_string(16);
+          var passwordData = sha512(pStr, salt);
+          var hash = passwordData.passwordHash;
+          db.run('INSERT INTO userCredentials (username, email, hash, salt) VALUES (?, ?, ?, ?)', [uStr, email, hash, salt], function (err) {
+              if (err) {
+                console.log(err);
+                return res.render('register');
+              }
+              console.log("Account created successfully!");
+              passport.authenticate("local")(req, res, function() {
+                console.log("Authenticated, redirecting...")
+                res.redirect('/journey');
+              });
+          });
+        }
       }
-      console.log("Account created successfully!");
-      passport.authenticate("local")(req, res, function() {
-        res.redirect('journey');
-      });
-  });
+    }
+  }
 });
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/journey',
@@ -198,7 +216,6 @@ function sha512 (password, salt) {
         passwordHash:value
     }
 }
-
 //Check to see if the user is authenticated
 function is_logged_in(req, res, next) {
   if (req.isAuthenticated()) {

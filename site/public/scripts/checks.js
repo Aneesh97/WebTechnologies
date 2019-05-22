@@ -12,15 +12,15 @@ function valid_email(email) {
 }
 
 //Check if password is longer than 8 chars
-function check_8_long(password) {
+function check_10_long(password) {
   let strength = false;
-  let arr = [ /.{8,}/ ];
+  let arr = [ /.{10,}/ ];
   $.map(arr, function(regexp) {
     if(password.match(regexp)) {
-      $(".8long").removeClass("text-muted").addClass("check_passed");
+      $(".10long").removeClass("text-muted").addClass("check_passed");
       strength = true;
     } else {
-      $(".8long").removeClass("check_passed").addClass("text-muted");
+      $(".10long").removeClass("check_passed").addClass("text-muted");
     }
   });
   return strength;
@@ -71,15 +71,30 @@ function check_1_number(password) {
   return strength;
 }
 
+function check_1_special(password) {
+  let strength = false;
+  let arr = [ /[!-\/:-@\[-`{-~]+/ ];
+  $.map(arr, function(regexp) {
+    if(password.match(regexp)) {
+      $(".1Special").removeClass("text-muted").addClass("check_passed");
+      strength = true;
+    } else {
+      $(".1Special").removeClass("check_passed").addClass("text-muted");
+    }
+  });
+  return strength;
+}
+
 //Check password strength
 function check_pass_strength() {
   let password = htmlEncode( $("#pass_to_check").val() );
   let fullStrength = false;
-  let eightLong = check_8_long(password);
+  let eightLong = check_10_long(password);
   let oneUpper = check_1_upper(password);
   let oneLower = check_1_lower(password);
   let oneNum = check_1_number(password);
-  if ( eightLong && oneUpper && oneLower && oneNum ) {
+  let oneSpec = check_1_special(password);
+  if ( eightLong && oneUpper && oneLower && oneNum && oneSpec) {
     fullStrength = true;
   }
   return fullStrength;
