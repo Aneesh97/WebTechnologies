@@ -8,6 +8,15 @@
 <% include partials/navbar_ld %>
 
 <div class="page_content">
+
+  <% if(logout_success && logout_success.length > 0) { %>
+    <div class="container">
+      <div class="alert alert-success" role="alert">
+        <%= logout_success %>
+      </div>
+    </div>
+  <% } %>
+
   <!-- Intro and picture -->
   <div class="section1">
     <div class="container">

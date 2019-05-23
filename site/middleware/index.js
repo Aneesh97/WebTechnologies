@@ -2,6 +2,7 @@
 //MIDDLEWARE FOR ALL ROUTES
 var crypto = require('crypto');
 var sqlite3 = require('sqlite3').verbose();
+var flash = require('connect-flash');
 var middlewareObj = {};
 
 //Open Database
@@ -33,6 +34,7 @@ middlewareObj.is_logged_in = function(req, res, next) {
     return next();
   }
   console.log('Not authenticated, redirecting...')
+  req.flash('auth_error', 'You need to be logged in to access that!');
   res.redirect('/login');
 }
 
