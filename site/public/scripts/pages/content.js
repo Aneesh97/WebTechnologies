@@ -16,7 +16,7 @@ function save_entry() {
     prompt: prompt,
     thoughts: thoughts
   }
-  const url = '/content';
+  const url = '/journal';
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
