@@ -1,19 +1,18 @@
 "use strict";
 
-var express = require("express");
-var app = express();
-var helmet = require('helmet');
-var fs = require("fs");
-const sqlite3 = require('sqlite3').verbose();
-var crypto = require('crypto');
-var passport = require('passport');
-var bodyParser = require('body-parser');
-var owasp = require('owasp-password-strength-test');
-var validator = require("validator");
-var uniqid = require('uniqid');
-var LocalStrategy = require('passport-local');
+var express       = require("express"),
+    app           = express(),
+    helmet        = require('helmet'),
+    fs            = require("fs"),
+    crypto        = require('crypto'),
+    passport      = require('passport'),
+    bodyParser    = require('body-parser'),
+    owasp         = require('owasp-password-strength-test'),
+    validator     = require("validator"),
+    uniqid        = require('uniqid'),
+    LocalStrategy = require('passport-local'),
+    sqlite3       = require('sqlite3').verbose();
 
-let db_username = "test";
 var banned = [];
 banUpperCase("./public/", "");
 // Define the sequence of functions to be called for each request
@@ -160,9 +159,9 @@ app.get('/review', is_logged_in, function (req, res) {
 //----------------------------------------------------------------------------//
 
 //Ban doubleslash
-app.get('*//*', function (req, res) {
-  console.log("double backslash request");
-  res.status(404).send("Double slash blocked");
+app.get('*', function (req, res) {
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.status(404).render("notfound");
 });
 
 //Account session functionality
@@ -398,11 +397,3 @@ function banUpperCase(root, folder) {
         banUpperCase(root, file);
     }
 }
-
-
-// db.close((err) => {
-//   if (err) {
-//     console.error(err.message);
-//   }
-//   console.log('Close the database connection.');
-// });
