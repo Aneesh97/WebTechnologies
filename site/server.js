@@ -96,11 +96,6 @@ app.get('/register', function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('register');
 });
-app.get('/register', function (req, res) {
-  console.log("Req: " + req.url);
-  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('register');
-});
 
 //----------------------------------------------------------------------------//
 // AUTHENTICATED ROUTING
@@ -122,7 +117,13 @@ app.get('/content', is_logged_in, function (req, res) {
 app.get('/journal', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('journal');
+  var uid = req.user.id;
+  db.all('SELECT prompt, entry FROM journal WHERE id = ? LIMIT 10', uid, function(err, rows) {
+    res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+    res.render('journal', {
+      journal_entries: rows
+    });
+  });
 });
 app.get('/journey', is_logged_in, function (req, res) {
   console.log("Req: " + req.url);
@@ -217,7 +218,6 @@ app.get('/logout', function(req, res) {
 
 //Save journal entry
 app.post('/content', function(req, res) {
-  console.log("test request is called!");
   let journalId = uniqid();
   let uid = req.user.id;
   let prompt = req.body.prompt;
@@ -237,7 +237,6 @@ app.post('/content', function(req, res) {
 });
 //Update test results
 app.put('/test', function(req, res) {
-  console.log("test request is called!");
   let o_val = req.body.o_val;
   let c_val = req.body.c_val;
   let e_val = req.body.e_val;
@@ -256,7 +255,6 @@ app.put('/test', function(req, res) {
 
 //Update account info
 app.put('/account', function(req, res) {
-  console.log("reached the put /account")
   let uid = req.user.id;
   let password = req.body.password;
   let new_password = req.body.new_password;
@@ -314,7 +312,6 @@ app.put('/account', function(req, res) {
 
 //Delete account
 app.delete('/account', function(req, res) {
-  console.log("reached the delete /account")
   let uid = req.user.id;
   let password = req.body.password;
   console.log(password);
