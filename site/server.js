@@ -45,6 +45,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(
   function(username, password, done) {
     //Get the salt attached to the username
+    username = username.toLowerCase();
     mw.db.get('SELECT salt FROM userCredentials WHERE username = ?', username, function(err, row) {
       if (!row) return done(null, false);
       //Hash the password with the salt

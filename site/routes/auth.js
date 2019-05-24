@@ -26,41 +26,52 @@ router.get('/register', function (req, res) {
 //Register a new account
 router.post('/register', function(req, res) {
   var uStr = req.body.username;
+  uStr = uStr.toLowerCase();
   var email = req.body.email;
   var pStr = req.body.password;
   var cStr = req.body.conf_password;
   var result = owasp.test(pStr);
   //Check email is valid & passwords are the same & password is valid & username contains only numbers and letters
   if (validator.isEmail(email) && pStr === cStr && result.strong && validator.isAlphanumeric(uStr)) {
-    console.log("Passed all checks, registering...")
-    var uid = uniqid();
-    var salt = mw.gen_random_string(16);
-    var passwordData = mw.sha512(pStr, salt);
-    var hash = passwordData.passwordHash;
-    mw.db.run('INSERT INTO userCredentials (id, username, email, hash, salt) VALUES (?, ?, ?, ?, ?)',
-    [uid, uStr, email, hash, salt],
-    function (err) {
-      if (err) {
-        console.log(err);
-        return res.render('register', {
-          error: 'Something went wrong... Please try again!'
+    //Check that no user already exists for the given username/email
+    mw.db.get('SELECT id FROM userCredentials WHERE username = ? OR email = ?', uStr, email, function(err, row) {
+      if (!row) {
+        console.log("Passed all checks, registering...")
+        var uid = uniqid();
+        var salt = mw.gen_random_string(16);
+        var passwordData = mw.sha512(pStr, salt);
+        var hash = passwordData.passwordHash;
+        mw.db.run('INSERT INTO userCredentials (id, username, email, hash, salt) VALUES (?, ?, ?, ?, ?)',
+        [uid, uStr, email, hash, salt],
+        function (err) {
+          if (err) {
+            console.log(err);
+            return res.render('register', {
+              error: 'Something went wrong... Please try again!'
+            });
+          }
+          mw.db.run('INSERT INTO userScores (id, Oscore, Cscore, Escore, Ascore, Nscore, Wellbeing) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          [uid, 0, 0, 0, 0, 0, 0], function(err) {
+            if (err) {
+              console.log(err);
+              return res.render('register', {
+                error: 'Something went wrong... Please try again!'
+              });
+            }
+            console.log("Account created successfully!");
+            passport.authenticate("local")(req, res, function() {
+              console.log("Authenticated, redirecting...")
+              req.flash('success', 'Account creation successful! Welcome ' + req.user.username + '!');
+              res.redirect('/test');
+            });
+          });
         });
       }
-      mw.db.run('INSERT INTO userScores (id, Oscore, Cscore, Escore, Ascore, Nscore, Wellbeing) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [uid, 0, 0, 0, 0, 0, 0], function(err) {
-        if (err) {
-          console.log(err);
-          return res.render('register', {
-            error: 'Something went wrong... Please try again!'
-          });
-        }
-        console.log("Account created successfully!");
-        passport.authenticate("local")(req, res, function() {
-          console.log("Authenticated, redirecting...")
-          req.flash('success', 'Account creation successful! Welcome ' + req.user.username + '!');
-          res.redirect('/test');
+      else {
+        return res.render('register', {
+          error: 'There\'s already a user with that name or email!'
         });
-      });
+      }
     });
   }
   else {
