@@ -46,6 +46,7 @@ router.post('/register', function(req, res) {
         function (err) {
           if (err) {
             console.log(err);
+            res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
             return res.render('register', {
               error: 'Something went wrong... Please try again!'
             });
@@ -54,6 +55,7 @@ router.post('/register', function(req, res) {
           [uid, 0, 0, 0, 0, 0, 0], function(err) {
             if (err) {
               console.log(err);
+              res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
               return res.render('register', {
                 error: 'Something went wrong... Please try again!'
               });
@@ -68,6 +70,7 @@ router.post('/register', function(req, res) {
         });
       }
       else {
+        res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
         return res.render('register', {
           error: 'There\'s already a user with that name or email!'
         });
@@ -75,6 +78,7 @@ router.post('/register', function(req, res) {
     });
   }
   else {
+    res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
     return res.render('register', {
       error: 'Something went wrong... Please try again!'
     });

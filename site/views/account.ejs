@@ -12,36 +12,50 @@
   <!-- User Information -->
   <div class="container">
 
-    <div class="form_group">
-      <input type="text" class="form-control new_username" placeholder="New Username"></input>
-    </div>
-    <div class="form_group">
-      <input type="email" class="form-control new_email" placeholder="New Email"></input>
-    </div>
-    <div class="form_group">
-      <input type="password" id="pass_to_check" class="form-control new_password" placeholder="New Password"></input>
-    </div>
-    <div class="pass_checks row text-center">
-      <div class="col">
-        <p class="small form-text text-muted 10long">10 characters long</p>
+    <% if(error && error.length > 0) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
       </div>
-      <div class="col">
-        <p class="small form-text text-muted 1Lower">1 lowercase letter</p>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
       </div>
-      <div class="col">
-        <p class="small form-text text-muted 1Upper">1 uppercase letter</p>
+    <% } %>
+
+    <form action="/account" method="POST">
+      <div class="form_group">
+        <input type="text" name="new_username" class="form-control" placeholder="New Username"></input>
       </div>
-      <div class="col">
-        <p class="small form-text text-muted 1Number">1 number</p>
+      <div class="form_group">
+        <input type="email" name="new_email" class="form-control" placeholder="New Email"></input>
       </div>
-      <div class="col">
-        <p class="small form-text text-muted 1Special">1 special character</p>
+      <div class="form_group">
+        <input type="password" name="new_password" id="pass_to_check" class="form-control" placeholder="New Password"></input>
       </div>
-    </div>
-    <div class="form_group">
-      <input type="password" class="form-control password" placeholder="Old Password"></input>
-    </div>
-    <button class="btn btn-lg btn-warning submit_acc_changes">Submit</button>
+      <div class="pass_checks row text-center">
+        <div class="col">
+          <p class="small form-text text-muted 10long">10 characters long</p>
+        </div>
+        <div class="col">
+          <p class="small form-text text-muted 1Lower">1 lowercase letter</p>
+        </div>
+        <div class="col">
+          <p class="small form-text text-muted 1Upper">1 uppercase letter</p>
+        </div>
+        <div class="col">
+          <p class="small form-text text-muted 1Number">1 number</p>
+        </div>
+        <div class="col">
+          <p class="small form-text text-muted 1Special">1 special character</p>
+        </div>
+      </div>
+      <div class="form_group">
+        <input type="password" name="password" class="form-control" placeholder="Old Password"></input>
+      </div>
+      <button type="submit" class="btn btn-lg btn-warning submit_acc_changes">Submit</button>
+    </form>
+
 
     <button type="button" class="btn btn-sm btn-link delete_init">Delete Account</button>
     <div class="jumbotron confirm_delete hidden">
