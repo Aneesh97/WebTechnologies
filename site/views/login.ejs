@@ -11,14 +11,9 @@
 <div class="page_content">
   <div class="container">
 
-    <% if(auth_error && auth_error.length > 0) { %>
+    <% if(error && error.length > 0) { %>
       <div class="alert alert-danger" role="alert">
-        <%= auth_error %>
-      </div>
-    <% } %>
-    <% if(login_error && login_error.length > 0) { %>
-      <div class="alert alert-danger" role="alert">
-        <%= login_error %>
+        <%= error %>
       </div>
     <% } %>
 

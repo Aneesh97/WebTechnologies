@@ -70,6 +70,23 @@ function next_question() {
   }
 }
 
+//Save initial entry
+function save_entry() {
+  var content_url = '/test';
+  var prompt = 'My initial thoughts and goals were:';
+  var thoughts = $('.content_thoughts').val();
+  var journal_entry = {
+    content_url: content_url,
+    prompt: prompt,
+    thoughts: thoughts
+  }
+  const url = '/journal';
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(journal_entry));
+}
+
 //Add in results to appropriate index
 function add_result( value ) {
   r.push(value.data);
@@ -78,9 +95,12 @@ function add_result( value ) {
 
 //When begin test clicked
 function submit_goals() {
+  save_entry();
   $(".test_begin").removeClass("hidden");
   $(".initial_goals").addClass("hidden");
 }
+
+
 
 //When begin test clicked
 function begin_test() {

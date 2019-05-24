@@ -7,7 +7,9 @@ var mw = require('../middleware');
 //Render test page
 router.get('/', mw.is_logged_in, function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('pers_test');
+  res.render('pers_test', {
+    success: req.flash('success')
+  });
 });
 
 //Update test results

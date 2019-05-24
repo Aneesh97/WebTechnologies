@@ -9,15 +9,9 @@
 
 <div class="page_content">
   <div class="container">
-    <% if(login_success && login_success.length > 0) { %>
+    <% if(success && success.length > 0) { %>
       <div class="alert alert-success" role="alert">
-        <%= login_success %>
-      </div>
-    <% } %>
-    <% if(reg_success && reg_success.length > 0) { %>
-      <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading"><%= reg_success %> </h4>
-        To get started, complete our <a href="/test" class="alert-link">personality test</a>...
+        <%= success %>
       </div>
     <% } %>
   </div>

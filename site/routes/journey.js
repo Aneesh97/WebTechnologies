@@ -8,8 +8,7 @@ var flash = require('connect-flash');
 router.get('/journey', mw.is_logged_in, function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('journey', {
-    reg_success: req.flash('reg_success'),
-    login_success: req.flash('success')
+    success: req.flash('success')
   });
 });
 

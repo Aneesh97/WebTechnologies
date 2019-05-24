@@ -13,14 +13,13 @@ var flash = require('connect-flash');
 router.get('/login', function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('login', {
-    auth_error: req.flash('auth_error'),
-    login_error: req.flash('error')
+    error: req.flash('error')
   });
 });
 router.get('/register', function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('register', {
-    reg_error: req.flash('reg_error')
+    error: req.flash('error')
   });
 });
 
@@ -44,7 +43,7 @@ router.post('/register', function(req, res) {
       if (err) {
         console.log(err);
         return res.render('register', {
-          reg_error: 'Something went wrong... Please try again!'
+          error: 'Something went wrong... Please try again!'
         });
       }
       mw.db.run('INSERT INTO userScores (id, Oscore, Cscore, Escore, Ascore, Nscore, Wellbeing) VALUES (?, ?, ?, ?, ?, ?, ?)',
@@ -52,21 +51,21 @@ router.post('/register', function(req, res) {
         if (err) {
           console.log(err);
           return res.render('register', {
-            reg_error: 'Something went wrong... Please try again!'
+            error: 'Something went wrong... Please try again!'
           });
         }
         console.log("Account created successfully!");
         passport.authenticate("local")(req, res, function() {
           console.log("Authenticated, redirecting...")
-          req.flash('reg_success', 'Account creation successful! Welcome ' + req.user.username + '!');
-          res.redirect('/journey');
+          req.flash('success', 'Account creation successful! Welcome ' + req.user.username + '!');
+          res.redirect('/test');
         });
       });
     });
   }
   else {
     return res.render('register', {
-      reg_error: 'Something went wrong... Please try again!'
+      error: 'Something went wrong... Please try again!'
     });
   }
 });
@@ -84,7 +83,7 @@ router.post('/login', passport.authenticate('local', {
 //Log out of an existing account
 router.get('/logout', function(req, res) {
   req.logout();
-  req.flash('logout_success', 'Successfully logged out!');
+  req.flash('success', 'Successfully logged out!');
   res.redirect('/');
 });
 

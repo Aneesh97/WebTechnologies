@@ -11,6 +11,10 @@
   <!-- User Journal -->
   <div class="container journal_container">
 
+    <% if(journal_entries && journal_entries.length <= 0) { %>
+      <h1>Nothing here yet! Start your journey to fill out your journal.</h1>
+    <% } %>
+
     <% for(var i = 0; i < journal_entries.length; i++) { %>
 
       <div class="row journal_entry">
