@@ -24,7 +24,7 @@
         <div class="col">
           <h5><%= journal_entries[i].prompt %></h5>
           <p><%= journal_entries[i].entry %></p>
-          <a href="/content"><button type="button" class="btn btn-warning">View</button></a>
+          <a href="/content/<%= journal_entries[i].contentid %>"><button type="button" class="btn btn-warning">View</button></a>
         </div>
       </div>
 

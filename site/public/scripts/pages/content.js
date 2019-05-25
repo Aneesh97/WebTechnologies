@@ -8,11 +8,12 @@ function start() {
 }
 
 function save_entry() {
-  var content_url = $('.video_content').attr('src');
+  var window_url = window.location.pathname.split('/');
+  var contentid = window_url[2];
   var prompt = $('.prompt').text();
   var thoughts = $('.content_thoughts').val();
   var journal_entry = {
-    content_url: content_url,
+    contentid: contentid,
     prompt: prompt,
     thoughts: thoughts
   }

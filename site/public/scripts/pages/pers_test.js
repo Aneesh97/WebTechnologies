@@ -72,11 +72,11 @@ function next_question() {
 
 //Save initial entry
 function save_entry() {
-  var content_url = '/test';
+  var contentid = 'test';
   var prompt = 'My initial thoughts and goals were:';
   var thoughts = $('.content_thoughts').val();
   var journal_entry = {
-    content_url: content_url,
+    contentid: contentid,
     prompt: prompt,
     thoughts: thoughts
   }

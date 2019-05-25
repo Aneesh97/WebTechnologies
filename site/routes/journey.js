@@ -5,20 +5,20 @@ var router = express.Router();
 var mw = require('../middleware');
 var flash = require('connect-flash');
 
-router.get('/journey', mw.is_logged_in, function (req, res) {
-  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('journey', {
-    success: req.flash('success')
+router.get('/', mw.is_logged_in, function (req, res) {
+  mw.db.all('SELECT contentid, image FROM content LIMIT 3', function(err, rows) {
+    res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+    res.render('journey', {
+      success: req.flash('success'),
+      im0: '/assets/placeholder.svg',
+      c0: rows[0].contentid,
+      im1: '/assets/placeholder.svg',
+      c1: rows[1].contentid,
+      im2: '/assets/placeholder.svg',
+      c2: rows[2].contentid
+    });
   });
-});
 
-
-router.get('/content', mw.is_logged_in, function (req, res) {
-  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
-  res.render('content', {
-    content_url: "https://www.youtube.com/embed/NpEaa2P7qZI",
-    prompt: "This is a test"
-  });
 });
 
 module.exports = router;
