@@ -23,9 +23,7 @@ var indexRoutes     = require('./routes/index'),
     journalRoutes   = require('./routes/journal'),
     testRoutes      = require('./routes/tests'),
     resultRoutes    = require('./routes/results'),
-    contactRoutes   = require('./routes/contact'),
-    cookiesRoutes   = require('./routes/cookies'),
-    privacyRoutes   = require('./routes/privacy');
+    contactRoutes   = require('./routes/contact');
 
 var banned = [];
 banUpperCase("./public/", "");
@@ -74,16 +72,12 @@ passport.deserializeUser(function(id, done) {
 app.use('/', indexRoutes);
 app.use('/', authRoutes);
 app.use('/account', accountRoutes);
+app.use('/contact', contactRoutes);
 app.use('/journey', journeyRoutes);
 app.use('/content', contentRoutes);
 app.use('/journal', journalRoutes);
 app.use('/test', testRoutes);
 app.use('/', resultRoutes);
-app.use('/contact', contactRoutes);
-app.use('/cookies', cookiesRoutes);
-app.use('/privacy', privacyRoutes);
-
-
 
 app.listen(8080, "localhost");
 console.log("Visit http://localhost:8080/");

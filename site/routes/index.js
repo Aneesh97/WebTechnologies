@@ -19,5 +19,13 @@ router.get('/about', function (req, res) {
   res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
   res.render('about');
 });
+router.get('/privacy', function (req, res) {
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('privacy');
+});
+router.get('/cookies', function (req, res) {
+  res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
+  res.render('cookies');
+});
 
 module.exports = router;
