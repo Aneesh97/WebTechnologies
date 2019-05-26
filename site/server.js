@@ -19,6 +19,7 @@ var indexRoutes     = require('./routes/index'),
     authRoutes      = require('./routes/auth'),
     accountRoutes   = require('./routes/account'),
     journeyRoutes   = require('./routes/journey'),
+    contentRoutes   = require('./routes/content'),
     journalRoutes   = require('./routes/journal'),
     testRoutes      = require('./routes/tests'),
     resultRoutes    = require('./routes/results'),
@@ -73,7 +74,8 @@ passport.deserializeUser(function(id, done) {
 app.use('/', indexRoutes);
 app.use('/', authRoutes);
 app.use('/account', accountRoutes);
-app.use('/', journeyRoutes);
+app.use('/journey', journeyRoutes);
+app.use('/content', contentRoutes);
 app.use('/journal', journalRoutes);
 app.use('/test', testRoutes);
 app.use('/', resultRoutes);
