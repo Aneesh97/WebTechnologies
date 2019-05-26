@@ -22,7 +22,10 @@ var indexRoutes     = require('./routes/index'),
     contentRoutes   = require('./routes/content'),
     journalRoutes   = require('./routes/journal'),
     testRoutes      = require('./routes/tests'),
-    resultRoutes    = require('./routes/results');
+    resultRoutes    = require('./routes/results'),
+    contactRoutes   = require('./routes/contact'),
+    cookiesRoutes   = require('./routes/cookies'),
+    privacyRoutes   = require('./routes/privacy');
 
 var banned = [];
 banUpperCase("./public/", "");
@@ -76,6 +79,11 @@ app.use('/content', contentRoutes);
 app.use('/journal', journalRoutes);
 app.use('/test', testRoutes);
 app.use('/', resultRoutes);
+app.use('/contact', contactRoutes);
+app.use('/cookies', cookiesRoutes);
+app.use('/privacy', privacyRoutes);
+
+
 
 app.listen(8080, "localhost");
 console.log("Visit http://localhost:8080/");
