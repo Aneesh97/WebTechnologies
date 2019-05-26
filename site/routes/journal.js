@@ -8,7 +8,7 @@ var flash = require('connect-flash');
 
 router.get('/', mw.is_logged_in, function (req, res) {
   var uid = req.user.id;
-  mw.db.all('SELECT prompt, entry, contentid FROM journal WHERE id = ? LIMIT 10', uid, function(err, rows) {
+  mw.db.all('SELECT prompt, entry, contentid, image FROM journal WHERE id = ? LIMIT 10', uid, function(err, rows) {
     res.set({'Content-Type': 'application/xhtml+xml; charset=utf-8'});
     res.render('journal', {
       journal_entries: rows
@@ -24,14 +24,16 @@ router.post('/', function(req, res) {
   let entry = req.body.thoughts;
   let timestamp = Date.now();
   let contentid = req.body.contentid;
-  mw.db.run('INSERT INTO journal (journalid, id, prompt, entry, timestamp, contentid) VALUES (?, ?, ?, ?, ?, ?)',
-  [journalId, uid, prompt, entry, timestamp, contentid],
-  function (err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log("Journal entry saved successfully!");
-    res.redirect('/journal');
+  mw.db.get('SELECT image FROM content WHERE contentid = ?', contentid, function(err, row) {
+    mw.db.run('INSERT INTO journal (journalid, id, prompt, entry, timestamp, contentid, image) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [journalId, uid, prompt, entry, timestamp, contentid, row.image],
+    function (err) {
+      if (err) {
+        console.log(err);
+      }
+      console.log("Journal entry saved successfully!");
+      res.redirect('/journal');
+    });
   });
 });
 
