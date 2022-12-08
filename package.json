@@ -4,11 +4,11 @@
   "description": "Roman Bromidge: rb16730 Aneesh Anand: aa16169",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "connect-flash": "^0.1.1",
     "crypto": "^1.0.1",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-session": "^1.16.1",
     "helmet": "^3.16.0",
     "owasp-password-strength-test": "^1.3.0",
